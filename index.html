@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velvet Crown Wigs | Premium Wigs, Custom Orders & Wig Care</title>
+  <meta name="description" content="Shop premium wigs, lace fronts, closures, custom units, wig revamps, installs, and care essentials in a clean ecommerce-style online store." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg: #fbf8f5;
+      --surface: #ffffff;
+      --surface-2: #f6f1ec;
+      --surface-3: #f2ebe4;
+      --text: #1f1a17;
+      --muted: #6f675f;
+      --line: #e6ddd5;
+      --line-strong: #dacabd;
+      --primary: #1d1d1f;
+      --accent: #a46a3f;
+      --accent-soft: #f1e2d6;
+      --success: #eff8f0;
+      --success-text: #2f6e3b;
+      --danger: #fff1f0;
+      --danger-text: #9d4540;
+      --shadow: 0 14px 40px rgba(39, 30, 23, 0.08);
+      --shadow-soft: 0 10px 30px rgba(39, 30, 23, 0.05);
+      --radius: 20px;
+      --radius-lg: 28px;
+      --max: 1360px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .promo-bar {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .promo-inner {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      text-align: center;
+      flex-wrap: wrap;
+      padding: 0.5rem 0;
+    }
+
+    .promo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: #d7c0ab;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .utility-bar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.84);
+    }
+
+    .utility-inner {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .utility-links,
+    .utility-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .utility-inner a:hover {
+      color: var(--text);
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251,248,245,0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(230,221,213,0.92);
+    }
+
+    .header-main {
+      display: grid;
+      grid-template-columns: 240px 1fr auto;
+      align-items: center;
+      gap: 1.2rem;
+      min-height: 92px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #fff, #f4e4d6);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    .brand span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-top: 0.12rem;
+    }
+
+    .search {
+      position: relative;
+    }
+
+    .search input {
+      width: 100%;
+      height: 52px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: #fff;
+      padding: 0 3.2rem 0 1.15rem;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    .search input:focus {
+      border-color: #c6aa91;
+      box-shadow: 0 0 0 4px rgba(164,106,63,0.08);
+    }
+
+    .search button {
+      position: absolute;
+      right: 0.45rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .icon-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .icon-btn .count {
+      position: absolute;
+      right: -2px;
+      top: -3px;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      display: grid;
+      place-items: center;
+      padding: 0 0.25rem;
+      font-weight: 700;
+    }
+
+    .mobile-toggle {
+      display: none;
+    }
+
+    .mega-nav {
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .mega-inner {
+      display: flex;
+      gap: 1.6rem;
+      align-items: center;
+      min-height: 60px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .mega-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mega-link {
+      font-weight: 700;
+      color: #433b35;
+      white-space: nowrap;
+      position: relative;
+      padding: 0.2rem 0;
+    }
+
+    .mega-link:hover,
+    .mega-link.active {
+      color: var(--accent);
+    }
+
+    .mega-link.active::after,
+    .mega-link:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.95rem;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .hero {
+      padding: 1.4rem 0 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      position: relative;
+      min-height: 560px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: linear-gradient(135deg, #efe4db, #f8f4ef);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+
+    .hero-copy {
+      padding: 3rem 2.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: fit-content;
+      background: rgba(255,255,255,0.72);
+      color: var(--accent);
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(164,106,63,0.15);
+      font-size: 0.88rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .hero-copy h1,
+    .section-title h2,
+    .split-banner h2,
+    .editorial h2 {
+      font-family: 'DM Serif Display', serif;
+      letter-spacing: -0.02em;
+      line-height: 0.95;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 5vw, 4.9rem);
+      margin-bottom: 1rem;
+      max-width: 9ch;
+    }
+
+    .hero-copy p {
+      max-width: 48ch;
+      color: #5f5852;
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.92rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-dark {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(29, 29, 31, 0.12);
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--line-strong);
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.4rem;
+    }
+
+    .trust-item {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(230,221,213,0.9);
+      border-radius: 999px;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #5d544d;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-badge {
+      position: absolute;
+      right: 1.1rem;
+      bottom: 1.1rem;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(230,221,213,0.92);
+      border-radius: 20px;
+      padding: 1rem;
+      min-width: 215px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-badge strong {
+      display: block;
+      font-size: 1.3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-badge span {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .mini-panel,
+    .mini-sale {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .mini-panel {
+      padding: 1.2rem;
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .mini-panel .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .mini-panel h3,
+    .mini-sale h3,
+    .product-card h3,
+    .service-card h3,
+    .review-card h3,
+    .help-card h3 {
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .mini-panel p,
+    .mini-sale p,
+    .section-title p,
+    .product-card p,
+    .service-card p,
+    .editorial p,
+    .help-card p,
+    .review-card p,
+    .footer p,
+    .footer a {
+      color: var(--muted);
+    }
+
+    .mini-sale {
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      min-height: 270px;
+    }
+
+    .mini-sale .content {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .mini-sale img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .quick-categories {
+      padding: 1.8rem 0 0;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      margin-bottom: 1rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title p {
+      max-width: 60ch;
+      line-height: 1.75;
+    }
+
+    .cat-row {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .cat-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 1rem;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-3px);
+      border-color: #cfb49a;
+    }
+
+    .cat-thumb {
+      height: 150px;
+      background: linear-gradient(180deg, #faf6f2, #f3ebe4);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.9rem;
+    }
+
+    .cat-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cat-card strong {
+      display: block;
+      margin-bottom: 0.22rem;
+    }
+
+    .cat-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .featured {
+      padding: 2rem 0 0;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: #544b45;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .chip.active,
+    .chip:hover {
+      background: #fff1e6;
+      border-color: #e0c0a6;
+      color: #8a532d;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: #cfb49a;
+      box-shadow: var(--shadow);
+    }
+
+    .product-badges {
+      position: absolute;
+      left: 0.9rem;
+      top: 0.9rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .badge {
+      width: fit-content;
+      padding: 0.45rem 0.72rem;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(230,221,213,0.9);
+    }
+
+    .badge.sale {
+      background: var(--danger);
+      color: var(--danger-text);
+    }
+
+    .badge.new {
+      background: #f4f0ff;
+      color: #6a54b4;
+    }
+
+    .product-media {
+      position: relative;
+      background: linear-gradient(180deg, #faf7f3, #f1e9e2);
+      aspect-ratio: 1 / 1.08;
+      overflow: hidden;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-media img {
+      transform: scale(1.03);
+    }
+
+    .wishlist-btn {
+      position: absolute;
+      right: 0.9rem;
+      top: 0.9rem;
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.96);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      color: #7a6e66;
+    }
+
+    .product-info {
+      padding: 1rem;
+    }
+
+    .meta-row,
+    .price-row,
+    .product-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .meta-row {
+      margin-bottom: 0.45rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .meta-row .stars {
+      color: #ef9f2d;
+      font-weight: 700;
+    }
+
+    .product-info h3 {
+      margin-bottom: 0.35rem;
+    }
+
+    .product-info p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
+      min-height: 44px;
+    }
+
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .swatch {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1px rgba(111,103,95,0.28);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .swatch:hover,
+    .swatch.active {
+      transform: scale(1.06);
+      box-shadow: 0 0 0 2px rgba(164,106,63,0.35);
+    }
+
+    .swatch-jet { background: #211d1b; }
+    .swatch-natural { background: linear-gradient(135deg, #2b2018, #5a4131); }
+    .swatch-brown { background: #5b3a2d; }
+    .swatch-ombre { background: linear-gradient(135deg, #241b19, #7a543e, #c29b74); }
+    .swatch-blonde { background: #ceb08b; }
+    .swatch-burgundy { background: #7a2331; }
+
+    .variant-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .variant-pill {
+      border-radius: 999px;
+      padding: 0.42rem 0.65rem;
+      background: var(--surface-2);
+      color: #5a514a;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .price-row {
+      margin-bottom: 0.95rem;
+    }
+
+    .price-main {
+      font-weight: 800;
+      font-size: 1.12rem;
+    }
+
+    .price-old {
+      color: #a49b93;
+      text-decoration: line-through;
+      font-size: 0.92rem;
+      margin-left: 0.35rem;
+    }
+
+    .stock {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--success-text);
+      background: var(--success);
+      border-radius: 999px;
+      padding: 0.42rem 0.6rem;
+    }
+
+    .product-cta .btn {
+      flex: 1;
+      padding-inline: 0.9rem;
+    }
+
+    .btn-ghost {
+      background: #fff;
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+    }
+
+    .split-banner {
+      padding: 2rem 0 0;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .split-banner .card {
+      min-height: 380px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: grid;
+      align-items: end;
+      position: relative;
+      background: var(--surface);
+    }
+
+    .split-banner .card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .split-banner .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(26,21,18,0.08), rgba(26,21,18,0.45));
+    }
+
+    .split-banner .content {
+      position: relative;
+      z-index: 1;
+      padding: 1.5rem;
+      color: #fff;
+      max-width: 24rem;
+    }
+
+    .split-banner h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.65rem;
+    }
+
+    .split-banner p {
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .shop-benefits {
+      padding: 2rem 0 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .service-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: #fff4eb;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      border: 1px solid #f0d9c7;
+    }
+
+    .service-card p {
+      line-height: 1.75;
+      font-size: 0.94rem;
+      margin-top: 0.45rem;
+    }
+
+    .editorial {
+      padding: 2rem 0 0;
+    }
+
+    .editorial-box {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 1.2rem;
+      background: linear-gradient(135deg, #f5ece5, #fbf7f3);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .editorial-copy {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .editorial h2 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      margin-bottom: 0.8rem;
+      max-width: 10ch;
+    }
+
+    .editorial p {
+      line-height: 1.85;
+      max-width: 58ch;
+      margin-bottom: 1.2rem;
+    }
+
+    .check-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 0.7rem;
+      align-items: start;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(230,221,213,0.94);
+      border-radius: 18px;
+      padding: 0.85rem 0.9rem;
+    }
+
+    .check-item i {
+      color: var(--accent);
+      margin-top: 0.15rem;
+    }
+
+    .editorial-media {
+      min-height: 420px;
+    }
+
+    .editorial-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .reviews {
+      padding: 2rem 0 0;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .review-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .review-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .review-stars {
+      color: #ef9f2d;
+      letter-spacing: 0.04em;
+    }
+
+    .review-card p {
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .review-card strong {
+      display: block;
+      margin-bottom: 0.18rem;
+    }
+
+    .help-center {
+      padding: 2rem 0 3rem;
+    }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .help-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .help-card h3 {
+      margin-bottom: 0.35rem;
+    }
+
+    .help-card p {
+      line-height: 1.75;
+      font-size: 0.94rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .help-link {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .footer {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      padding: 2.2rem 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .footer-brand p {
+      max-width: 34ch;
+      line-height: 1.8;
+      margin-top: 0.8rem;
+    }
+
+    .footer h4 {
+      margin-bottom: 0.8rem;
+      font-size: 0.98rem;
+    }
+
+    .footer ul {
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .footer a:hover {
+      color: var(--text);
+    }
+
+    .copyright {
+      margin-top: 1.8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1200px) {
+      .products-grid,
+      .cat-row,
+      .benefits-grid,
+      .help-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-grid,
+      .editorial-box,
+      .split-grid,
+      .reviews-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-main {
+        grid-template-columns: 220px 1fr auto;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .utility-bar {
+        display: none;
+      }
+
+      .header-main {
+        grid-template-columns: 1fr auto auto;
+        min-height: 82px;
+      }
+
+      .search {
+        grid-column: 1 / -1;
+        order: 4;
+        padding-bottom: 1rem;
+      }
+
+      .mobile-toggle {
+        display: grid;
+      }
+
+      .hero-main {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-wrap {
+        min-height: 320px;
+      }
+
+      .check-list,
+      .benefits-grid,
+      .help-grid,
+      .cat-row,
+      .products-grid,
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-sale {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--max), calc(100% - 1rem));
+      }
+
+      .hero-copy {
+        padding: 1.4rem;
+      }
+
+      .section-title {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy h1 {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="promo-bar">
+    <div class="container promo-inner">
+      <span class="promo-pill"><i class="fa-solid fa-tag"></i> 20% off selected wigs this week</span>
+      <span>Free nationwide delivery on orders above GH₵1,500</span>
+    </div>
+  </div>
+
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <div class="utility-links">
+        <a href="#">Track Order</a>
+        <a href="#">Help Center</a>
+        <a href="#">Returns</a>
+        <a href="#">Custom Wig Consultation</a>
+      </div>
+      <div class="utility-meta">
+        <span><i class="fa-brands fa-whatsapp"></i> WhatsApp support: +233 00 000 0000</span>
+        <span>Mon - Sat, 9am - 7pm</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header-main">
+      <a href="index.html" class="brand">
+        <div class="brand-mark"><i class="fa-solid fa-crown"></i></div>
+        <div>
+          <strong>Velvet Crown Wigs</strong>
+          <span>Luxury units, installs & revamps</span>
+        </div>
+      </a>
+
+      <form class="search">
+        <input type="search" placeholder="Search wigs by name, color, texture, lace type, length..." aria-label="Search products" />
+        <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+
+      <div class="header-actions">
+        <button class="icon-btn mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        <button class="icon-btn" aria-label="Account"><i class="fa-regular fa-user"></i></button>
+        <button class="icon-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i><span class="count">4</span></button>
+        <button class="icon-btn" aria-label="Cart"><i class="fa-solid fa-bag-shopping"></i><span class="count">2</span></button>
+      </div>
+    </div>
+
+    <nav class="mega-nav">
+      <div class="container mega-inner">
+        <a class="mega-link active" href="#">New In</a>
+        <a class="mega-link" href="#">Human Hair</a>
+        <a class="mega-link" href="#">Lace Front</a>
+        <a class="mega-link" href="#">Closure Wigs</a>
+        <a class="mega-link" href="#">Glueless Wigs</a>
+        <a class="mega-link" href="#">Curly</a>
+        <a class="mega-link" href="#">Straight</a>
+        <a class="mega-link" href="#">Colored Wigs</a>
+        <a class="mega-link" href="#">Bob Wigs</a>
+        <a class="mega-link" href="#">Full Lace</a>
+        <a class="mega-link" href="#">Bundles</a>
+        <a class="mega-link" href="#">Accessories</a>
+        <a class="mega-link" href="#">Services</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-main">
+          <div class="hero-copy">
+            <div class="eyebrow"><i class="fa-solid fa-bolt"></i> New arrivals. Best sellers. Custom luxury.</div>
+            <h1>Shop wigs that actually look premium.</h1>
+            <p>
+              Browse lace fronts, closures, glueless units, curls, straight textures, and custom color options in a clean shopping experience built to feel like a real store, not a basic salon page.
+            </p>
+            <div class="hero-actions">
+              <a href="products.html" class="btn btn-dark"><i class="fa-solid fa-bag-shopping"></i> Shop All Wigs</a>
+              <a href="product.html" class="btn btn-light">View Best Seller</a>
+            </div>
+            <div class="hero-trust">
+              <span class="trust-item">HD lace options</span>
+              <span class="trust-item">Color choices available</span>
+              <span class="trust-item">Secure checkout flow</span>
+            </div>
+          </div>
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80" alt="Premium wig display" />
+            <div class="hero-badge">
+              <strong>32 inches</strong>
+              <span>Luxury body wave frontal now available in Natural Black, Espresso Brown, and Ombre Melt.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="mini-panel">
+            <div class="top">
+              <div>
+                <h3>Shop by texture</h3>
+                <p>Quickly browse the most requested styles.</p>
+              </div>
+              <a href="#" class="help-link">See all</a>
+            </div>
+            <div class="toolbar">
+              <span class="chip active">Body Wave</span>
+              <span class="chip">Bone Straight</span>
+              <span class="chip">Water Curl</span>
+              <span class="chip">Deep Wave</span>
+              <span class="chip">Jerry Curl</span>
+              <span class="chip">Pixie Cut</span>
+            </div>
+          </div>
+
+          <div class="mini-sale">
+            <div class="content">
+              <div class="eyebrow">Sale spotlight</div>
+              <h3>Ready-to-wear units under GH₵1,200</h3>
+              <p>Affordable everyday wigs with neat finishing, color options, and beginner-friendly wear.</p>
+              <a href="#" class="btn btn-dark">Shop Sale</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80" alt="Wig product showcase" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-categories">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Shop by category</h2>
+            <p>Start where most shoppers start: by type, texture, and finish. These homepage cards make the store feel immediately browsable.</p>
+          </div>
+        </div>
+
+        <div class="cat-row">
+          <a href="#" class="cat-card">
+            <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Lace front wigs" /></div>
+            <strong>Lace Front Wigs</strong>
+            <span>Natural hairline & premium finish</span>
+          </a>
+          <a href="#" class="cat-card">
+            <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Glueless wigs" /></div>
+            <strong>Glueless Wigs</strong>
+            <span>Easy wear, beginner-friendly</span>
+          </a>
+          <a href="#" class="cat-card">
+            <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" alt="Curly wigs" /></div>
+            <strong>Curly Units</strong>
+            <span>Volume, texture & softness</span>
+          </a>
+          <a href="#" class="cat-card">
+            <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?auto=format&fit=crop&w=900&q=80" alt="Straight wigs" /></div>
+            <strong>Straight Wigs</strong>
+            <span>Sleek everyday glam</span>
+          </a>
+          <a href="#" class="cat-card">
+            <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=80" alt="Colored wigs" /></div>
+            <strong>Colored Wigs</strong>
+            <span>Ombre, burgundy & custom shades</span>
+          </a>
+          <a href="#" class="cat-card">
+            <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Bob wigs" /></div>
+            <strong>Bob Collection</strong>
+            <span>Sharp cuts & polished volume</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Best sellers</h2>
+            <p>This grid is designed to feel like a real storefront: badges, ratings, swatches, price blocks, stock status, and strong add-to-cart actions.</p>
+          </div>
+          <div class="toolbar">
+            <button class="chip active">All</button>
+            <button class="chip">Human Hair</button>
+            <button class="chip">Closure</button>
+            <button class="chip">Frontal</button>
+            <button class="chip">Glueless</button>
+          </div>
+        </div>
+
+        <div class="products-grid">
+          <article class="product-card">
+            <div class="product-badges">
+              <span class="badge sale">-15%</span>
+              <span class="badge">Best Seller</span>
+            </div>
+            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Body wave frontal wig" />
+            </div>
+            <div class="product-info">
+              <div class="meta-row">
+                <span>Body Wave • 13x4 Lace</span>
+                <span class="stars">★ 4.9</span>
+              </div>
+              <h3>Velvet Body Wave Frontal</h3>
+              <p>Soft luxury texture with pre-plucked HD lace and natural movement.</p>
+              <div class="swatches">
+                <button class="swatch swatch-natural active" aria-label="Natural Black"></button>
+                <button class="swatch swatch-brown" aria-label="Espresso Brown"></button>
+                <button class="swatch swatch-ombre" aria-label="Ombre Melt"></button>
+              </div>
+              <div class="variant-bar">
+                <span class="variant-pill">22&quot; - 32&quot;</span>
+                <span class="variant-pill">150% Density</span>
+                <span class="variant-pill">HD Lace</span>
+              </div>
+              <div class="price-row">
+                <div><span class="price-main">GH₵2,450</span><span class="price-old">GH₵2,900</span></div>
+                <span class="stock">In stock</span>
+              </div>
+              <div class="product-cta">
+                <a class="btn btn-dark" href="product.html">Quick View</a>
+                <button class="btn btn-ghost">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-badges">
+              <span class="badge new">New</span>
+            </div>
+            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80" alt="Bone straight closure wig" />
+            </div>
+            <div class="product-info">
+              <div class="meta-row">
+                <span>Bone Straight • 5x5 Closure</span>
+                <span class="stars">★ 4.8</span>
+              </div>
+              <h3>Silk Straight Closure Unit</h3>
+              <p>Neat silk press look with beginner-friendly closure and low-maintenance styling.</p>
+              <div class="swatches">
+                <button class="swatch swatch-jet active" aria-label="Jet Black"></button>
+                <button class="swatch swatch-natural" aria-label="Natural Black"></button>
+                <button class="swatch swatch-burgundy" aria-label="Burgundy"></button>
+              </div>
+              <div class="variant-bar">
+                <span class="variant-pill">14&quot; - 26&quot;</span>
+                <span class="variant-pill">180% Density</span>
+                <span class="variant-pill">Closure</span>
+              </div>
+              <div class="price-row">
+                <div><span class="price-main">GH₵1,980</span></div>
+                <span class="stock">In stock</span>
+              </div>
+              <div class="product-cta">
+                <a class="btn btn-dark" href="product.html">Quick View</a>
+                <button class="btn btn-ghost">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-badges">
+              <span class="badge">Top Rated</span>
+            </div>
+            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" alt="Curly wig unit" />
+            </div>
+            <div class="product-info">
+              <div class="meta-row">
+                <span>Deep Wave • Glueless</span>
+                <span class="stars">★ 5.0</span>
+              </div>
+              <h3>Deep Wave Glueless Wig</h3>
+              <p>Defined curls, breathable cap, and a secure fit that still feels lightweight.</p>
+              <div class="swatches">
+                <button class="swatch swatch-natural active" aria-label="Natural Black"></button>
+                <button class="swatch swatch-brown" aria-label="Chocolate Brown"></button>
+              </div>
+              <div class="variant-bar">
+                <span class="variant-pill">16&quot; - 28&quot;</span>
+                <span class="variant-pill">Ready to wear</span>
+                <span class="variant-pill">Elastic band</span>
+              </div>
+              <div class="price-row">
+                <div><span class="price-main">GH₵2,320</span></div>
+                <span class="stock">In stock</span>
+              </div>
+              <div class="product-cta">
+                <a class="btn btn-dark" href="product.html">Quick View</a>
+                <button class="btn btn-ghost">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-badges">
+              <span class="badge sale">Bundle Deal</span>
+            </div>
+            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Short bob wig" />
+            </div>
+            <div class="product-info">
+              <div class="meta-row">
+                <span>Bob Wig • 13x4 Frontal</span>
+                <span class="stars">★ 4.7</span>
+              </div>
+              <h3>Classic Blunt Bob Wig</h3>
+              <p>Structured cut with polished ends and a luxury salon-finished silhouette.</p>
+              <div class="swatches">
+                <button class="swatch swatch-jet active" aria-label="Jet Black"></button>
+                <button class="swatch swatch-brown" aria-label="Brown"></button>
+                <button class="swatch swatch-blonde" aria-label="Honey Blonde"></button>
+              </div>
+              <div class="variant-bar">
+                <span class="variant-pill">10&quot; - 14&quot;</span>
+                <span class="variant-pill">Custom color</span>
+                <span class="variant-pill">Frontal</span>
+              </div>
+              <div class="price-row">
+                <div><span class="price-main">GH₵1,650</span></div>
+                <span class="stock">Low stock</span>
+              </div>
+              <div class="product-cta">
+                <a class="btn btn-dark" href="product.html">Quick View</a>
+                <button class="btn btn-ghost">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="split-banner">
+      <div class="container split-grid">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1200&q=80" alt="Custom wig banner" />
+          <div class="overlay"></div>
+          <div class="content">
+            <div class="eyebrow">Custom orders</div>
+            <h2>Need a custom color or length?</h2>
+            <p>Create a wig exactly how you want it, from density and lace to length and shade.</p>
+            <a href="#" class="btn btn-light">Start Custom Order</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="Wig revamp service banner" />
+          <div class="overlay"></div>
+          <div class="content">
+            <div class="eyebrow">Services</div>
+            <h2>Revamp, install, and bring old wigs back.</h2>
+            <p>Offer a proper service flow alongside products so customers can shop and also book help.</p>
+            <a href="#" class="btn btn-light">Book a Service</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shop-benefits">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Why shoppers stay</h2>
+            <p>This homepage also needs reassurance blocks, the same way real online stores quietly build trust while users browse.</p>
+          </div>
+        </div>
+        <div class="benefits-grid">
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <h3>Fast delivery</h3>
+            <p>Quick processing for ready-to-ship units and smooth dispatch nationwide.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+            <h3>Color options</h3>
+            <p>Let shoppers preview and choose from natural black, browns, burgundy, and ombre blends.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-medal"></i></div>
+            <h3>Premium finishing</h3>
+            <p>Laid lace, neat customization, quality texture, and polished styling details.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-headset"></i></div>
+            <h3>Support that sells</h3>
+            <p>WhatsApp support, consultation flow, and a store layout that makes decisions easier.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="editorial">
+      <div class="container editorial-box">
+        <div class="editorial-copy">
+          <div class="eyebrow">Store feature</div>
+          <h2>Help shoppers choose the right wig.</h2>
+          <p>
+            The best wig stores do not just show products. They guide customers through lace types, density, sizing, and color selection. This section gives your homepage that same polished retail intelligence.
+          </p>
+          <div class="check-list">
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>HD lace vs closure explained</span></div>
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Length guide for every look</span></div>
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Color match support</span></div>
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Beginner-friendly wig picks</span></div>
+          </div>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-dark">Read Wig Guide</a>
+            <a href="#" class="btn btn-light">Take Quiz</a>
+          </div>
+        </div>
+        <div class="editorial-media">
+          <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=1200&q=80" alt="Wig fitting and styling guide" />
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Customer love</h2>
+            <p>A commerce homepage feels more believable when reviews sit close to the product journey.</p>
+          </div>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-meta">
+              <div>
+                <h3>Luxury quality</h3>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <span>Verified buyer</span>
+            </div>
+            <p>The body wave wig was even prettier in person. The lace looked good, the texture was soft, and packaging felt premium.</p>
+            <strong>Naa A.</strong>
+            <span>Ordered 26&quot; Body Wave Frontal</span>
+          </article>
+          <article class="review-card">
+            <div class="review-meta">
+              <div>
+                <h3>Easy shopping</h3>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <span>Verified buyer</span>
+            </div>
+            <p>I liked that I could see the wig options clearly and choose the color before buying. It felt like a proper online shop.</p>
+            <strong>Efya M.</strong>
+            <span>Ordered Straight Closure Wig</span>
+          </article>
+          <article class="review-card">
+            <div class="review-meta">
+              <div>
+                <h3>Service was amazing</h3>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <span>Verified client</span>
+            </div>
+            <p>I booked a revamp and install. My old wig came back looking fresh and expensive. This kind of service section is needed.</p>
+            <strong>Akosua D.</strong>
+            <span>Booked Wig Revamp + Install</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="help-center">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Help center</h2>
+            <p>These blocks make the homepage feel complete, useful, and close to the experience of a real beauty ecommerce brand.</p>
+          </div>
+        </div>
+        <div class="help-grid">
+          <article class="help-card">
+            <h3>Wig Care Tips</h3>
+            <p>Teach customers how to wash, store, and maintain their units so they last longer.</p>
+            <a class="help-link" href="#">Learn more</a>
+          </article>
+          <article class="help-card">
+            <h3>Find Your Size</h3>
+            <p>Add measuring help so shoppers feel more confident when ordering custom or glueless units.</p>
+            <a class="help-link" href="#">View guide</a>
+          </article>
+          <article class="help-card">
+            <h3>Color Matching</h3>
+            <p>Help clients understand black tones, brown blends, blonde levels, and custom requests.</p>
+            <a class="help-link" href="#">See shades</a>
+          </article>
+          <article class="help-card">
+            <h3>Need human help?</h3>
+            <p>Offer a consultation route for anyone unsure what wig, lace, or density to choose.</p>
+            <a class="help-link" href="#">Book consult</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand">
+            <div class="brand-mark"><i class="fa-solid fa-crown"></i></div>
+            <div>
+              <strong>Velvet Crown Wigs</strong>
+              <span>Luxury units, installs & revamps</span>
+            </div>
+          </a>
+          <p>
+            A modern wig storefront concept with real shop structure, product sections, and service pathways built for conversions.
+          </p>
+        </div>
+
+        <div>
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">Human Hair Wigs</a></li>
+            <li><a href="#">Lace Front Wigs</a></li>
+            <li><a href="#">Closure Wigs</a></li>
+            <li><a href="#">Glueless Wigs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Track Order</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">WhatsApp: +233 00 000 0000</a></li>
+            <li><a href="#">Instagram: @velvetcrownwigs</a></li>
+            <li><a href="#">Email: hello@velvetcrownwigs.com</a></li>
+            <li><a href="#">Accra, Ghana</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <span>© 2026 Velvet Crown Wigs. All rights reserved.</span>
+        <span>Homepage concept only — connect to products, cart, and checkout pages next.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
