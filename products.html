@@ -4,1656 +4,731 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shop All Wigs | Velvet Crown Wigs</title>
-  <meta name="description" content="Browse all wigs by texture, lace type, length, color, density, and price. Shop premium wig collections with filters and swatches." />
+  <meta name="description" content="Browse all wigs by category, texture, lace type, color, length, density, and price. Shop a premium wig collection with working filters and sorting." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
- <link rel="stylesheet" href="styles.css" />
-  <script src="script.js"></script>
-  <style>
-    :root {
-      --bg: #fbf8f5;
-      --surface: #ffffff;
-      --surface-2: #f6f1ec;
-      --surface-3: #f2ebe4;
-      --text: #1f1a17;
-      --muted: #6f675f;
-      --line: #e6ddd5;
-      --line-strong: #d9cabd;
-      --primary: #1d1d1f;
-      --accent: #a46a3f;
-      --accent-soft: #f6e8db;
-      --success: #eff8f0;
-      --success-text: #2f6e3b;
-      --warning: #fff6ea;
-      --warning-text: #9b632f;
-      --danger: #fff1f0;
-      --danger-text: #9d4540;
-      --shadow: 0 16px 42px rgba(39, 30, 23, 0.08);
-      --shadow-soft: 0 10px 30px rgba(39, 30, 23, 0.05);
-      --radius: 20px;
-      --radius-lg: 28px;
-      --max: 1360px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
-    button, input, select { font: inherit; }
-
-    .container {
-      width: min(var(--max), calc(100% - 2rem));
-      margin: 0 auto;
-    }
-
-    .promo-bar {
-      background: var(--primary);
-      color: #fff;
-      font-size: 0.9rem;
-    }
-
-    .promo-inner {
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      text-align: center;
-      padding: 0.45rem 0;
-    }
-
-    .promo-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      color: #dec3aa;
-      font-weight: 700;
-    }
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(251,248,245,0.94);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .header-main {
-      display: grid;
-      grid-template-columns: 240px 1fr auto;
-      gap: 1.2rem;
-      align-items: center;
-      min-height: 88px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-weight: 800;
-    }
-
-    .brand-mark {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(145deg, #fff, #f4e4d6);
-      border: 1px solid var(--line);
-      color: var(--accent);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .brand strong { display: block; font-size: 1.05rem; }
-    .brand span { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 0.1rem; }
-
-    .search {
-      position: relative;
-    }
-
-    .search input {
-      width: 100%;
-      height: 52px;
-      border-radius: 999px;
-      border: 1px solid var(--line-strong);
-      background: #fff;
-      padding: 0 3.2rem 0 1.15rem;
-      outline: none;
-    }
-
-    .search input:focus {
-      border-color: #c5a88e;
-      box-shadow: 0 0 0 4px rgba(164,106,63,0.08);
-    }
-
-    .search button {
-      position: absolute;
-      right: 0.45rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 0;
-      background: var(--primary);
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 0.7rem;
-      align-items: center;
-    }
-
-    .icon-btn {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      background: #fff;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      position: relative;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .icon-btn .count {
-      position: absolute;
-      top: -4px;
-      right: -2px;
-      min-width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      padding: 0 0.25rem;
-      display: grid;
-      place-items: center;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 800;
-    }
-
-    .mega-nav {
-      border-top: 1px solid var(--line);
-      background: var(--surface);
-    }
-
-    .mega-inner {
-      min-height: 58px;
-      display: flex;
-      align-items: center;
-      gap: 1.55rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .mega-inner::-webkit-scrollbar { display: none; }
-
-    .mega-link {
-      white-space: nowrap;
-      font-weight: 700;
-      color: #433b35;
-      position: relative;
-      padding: 0.2rem 0;
-    }
-
-    .mega-link:hover,
-    .mega-link.active { color: var(--accent); }
-
-    .mega-link:hover::after,
-    .mega-link.active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -0.9rem;
-      height: 2px;
-      background: var(--accent);
-    }
-
-    .breadcrumbs {
-      padding: 1rem 0 0;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    .breadcrumbs a:hover { color: var(--text); }
-
-    .page-hero {
-      padding: 1rem 0 0;
-    }
-
-    .hero-box {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 1rem;
-      background: linear-gradient(135deg, #f5ece5, #fbf7f3);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-copy {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      width: fit-content;
-      padding: 0.55rem 0.85rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.76);
-      border: 1px solid rgba(164,106,63,0.14);
-      color: var(--accent);
-      font-size: 0.88rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    .hero-copy h1,
-    .section-title h2,
-    .story-card h2 {
-      font-family: 'DM Serif Display', serif;
-      letter-spacing: -0.02em;
-      line-height: 0.96;
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      margin-bottom: 0.9rem;
-      max-width: 9ch;
-    }
-
-    .hero-copy p {
-      color: #615953;
-      line-height: 1.85;
-      max-width: 58ch;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-    }
-
-    .hero-tag {
-      background: rgba(255,255,255,0.76);
-      border: 1px solid rgba(230,221,213,0.95);
-      border-radius: 999px;
-      padding: 0.68rem 0.95rem;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #574f49;
-    }
-
-    .hero-media {
-      min-height: 320px;
-      position: relative;
-    }
-
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .story-card {
-      position: absolute;
-      right: 1rem;
-      bottom: 1rem;
-      background: rgba(255,255,255,0.95);
-      border: 1px solid rgba(230,221,213,0.95);
-      border-radius: 22px;
-      padding: 1rem;
-      max-width: 250px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .story-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .story-card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .listing {
-      padding: 1.4rem 0 3rem;
-    }
-
-    .listing-grid {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 1rem;
-      align-items: start;
-    }
-
-    .sidebar {
-      position: sticky;
-      top: 152px;
-      display: grid;
-      gap: 1rem;
-    }
-
-    .filter-card,
-    .promo-card,
-    .products-shell,
-    .feature-strip {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .filter-card {
-      padding: 1.1rem;
-    }
-
-    .filter-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .filter-header h3,
-    .filter-group h4,
-    .promo-card h3,
-    .toolbar-top h3,
-    .product-card h3 {
-      font-size: 1rem;
-    }
-
-    .clear-link {
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 0.88rem;
-    }
-
-    .filter-group + .filter-group {
-      border-top: 1px solid var(--line);
-      margin-top: 1rem;
-      padding-top: 1rem;
-    }
-
-    .filter-group h4 {
-      margin-bottom: 0.7rem;
-    }
-
-    .check-list {
-      display: grid;
-      gap: 0.6rem;
-    }
-
-    .check-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.8rem;
-      font-size: 0.93rem;
-      color: #514943;
-    }
-
-    .check-row label {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      cursor: pointer;
-    }
-
-    .check-row input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--accent);
-    }
-
-    .check-row span:last-child {
-      color: #8e837a;
-      font-size: 0.88rem;
-    }
-
-    .swatch-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-    }
-
-    .swatch {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      box-shadow: 0 0 0 1px rgba(111,103,95,0.26);
-      cursor: pointer;
-    }
-
-    .swatch.active,
-    .swatch:hover {
-      box-shadow: 0 0 0 2px rgba(164,106,63,0.34);
-    }
-
-    .swatch-jet { background: #201c1a; }
-    .swatch-natural { background: linear-gradient(135deg, #271d16, #5b4232); }
-    .swatch-brown { background: #684636; }
-    .swatch-ombre { background: linear-gradient(135deg, #251b19, #7b5640, #c7a07c); }
-    .swatch-blonde { background: #cdb08b; }
-    .swatch-burgundy { background: #742131; }
-
-    .range-box {
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .range-box input[type="range"] {
-      width: 100%;
-      accent-color: var(--accent);
-    }
-
-    .range-values {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .promo-card {
-      overflow: hidden;
-    }
-
-    .promo-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-
-    .promo-content {
-      padding: 1rem;
-    }
-
-    .promo-content p {
-      color: var(--muted);
-      line-height: 1.75;
-      margin: 0.5rem 0 0.9rem;
-      font-size: 0.93rem;
-    }
-
-    .btn {
-      border: 0;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      padding: 0.9rem 1.25rem;
-      border-radius: 999px;
-      font-weight: 800;
-      white-space: nowrap;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-
-    .btn-dark {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 10px 22px rgba(29,29,31,0.12);
-    }
-
-    .btn-light {
-      background: #fff;
-      color: var(--text);
-      border: 1px solid var(--line-strong);
-    }
-
-    .products-shell {
-      padding: 1rem;
-    }
-
-    .toolbar-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.9rem;
-    }
-
-    .toolbar-top p {
-      color: var(--muted);
-      font-size: 0.93rem;
-      margin-top: 0.25rem;
-    }
-
-    .toolbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      flex-wrap: wrap;
-    }
-
-    .mobile-filter {
-      display: none;
-    }
-
-    .select,
-    .view-toggle {
-      height: 46px;
-      border-radius: 999px;
-      border: 1px solid var(--line-strong);
-      background: #fff;
-      padding: 0 1rem;
-      color: #504842;
-    }
-
-    .view-toggle {
-      min-width: 46px;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-    }
-
-    .active-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 0.95rem;
-    }
-
-    .active-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: var(--accent-soft);
-      border: 1px solid #edd4bf;
-      color: #85532f;
-      padding: 0.62rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.86rem;
-      font-weight: 700;
-    }
-
-    .feature-strip {
-      margin-bottom: 1rem;
-      padding: 1rem;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.8rem;
-    }
-
-    .feature-item {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 0.95rem;
-      display: flex;
-      gap: 0.8rem;
-      align-items: start;
-    }
-
-    .feature-item i {
-      color: var(--accent);
-      margin-top: 0.1rem;
-    }
-
-    .feature-item strong {
-      display: block;
-      margin-bottom: 0.18rem;
-      font-size: 0.93rem;
-    }
-
-    .feature-item span {
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.55;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .product-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      border-color: #ccb09a;
-    }
-
-    .product-badges {
-      position: absolute;
-      left: 0.9rem;
-      top: 0.9rem;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .badge {
-      width: fit-content;
-      padding: 0.45rem 0.72rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.95);
-      border: 1px solid rgba(230,221,213,0.95);
-      font-size: 0.76rem;
-      font-weight: 800;
-    }
-
-    .badge.sale { background: var(--danger); color: var(--danger-text); }
-    .badge.new { background: #f4f0ff; color: #6d54b8; }
-    .badge.fast { background: var(--warning); color: var(--warning-text); }
-
-    .wishlist-btn {
-      position: absolute;
-      right: 0.9rem;
-      top: 0.9rem;
-      z-index: 2;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.96);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      color: #7a6e66;
-    }
-
-    .product-media {
-      aspect-ratio: 1 / 1.08;
-      background: linear-gradient(180deg, #faf7f3, #f1e9e2);
-      overflow: hidden;
-    }
-
-    .product-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.28s ease;
-    }
-
-    .product-card:hover .product-media img {
-      transform: scale(1.03);
-    }
-
-    .product-info {
-      padding: 1rem;
-    }
-
-    .meta-row,
-    .price-row,
-    .product-cta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .meta-row {
-      margin-bottom: 0.45rem;
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .stars {
-      color: #ef9f2d;
-      font-weight: 700;
-    }
-
-    .product-info h3 {
-      margin-bottom: 0.32rem;
-      line-height: 1.35;
-    }
-
-    .product-info p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
-      margin-bottom: 0.8rem;
-      min-height: 46px;
-    }
-
-    .swatches {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .variant-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .variant-pill {
-      background: var(--surface-2);
-      color: #5a514a;
-      padding: 0.42rem 0.65rem;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .price-main {
-      font-weight: 800;
-      font-size: 1.12rem;
-    }
-
-    .price-old {
-      color: #a59c94;
-      text-decoration: line-through;
-      font-size: 0.92rem;
-      margin-left: 0.35rem;
-    }
-
-    .stock {
-      font-size: 0.82rem;
-      font-weight: 800;
-      padding: 0.42rem 0.6rem;
-      border-radius: 999px;
-      background: var(--success);
-      color: var(--success-text);
-    }
-
-    .stock.low {
-      background: var(--warning);
-      color: var(--warning-text);
-    }
-
-    .product-cta .btn {
-      flex: 1;
-      padding-inline: 0.85rem;
-    }
-
-    .pagination {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1.2rem;
-    }
-
-    .page-btn {
-      min-width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      border: 1px solid var(--line-strong);
-      background: #fff;
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .page-btn.active,
-    .page-btn:hover {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    .newsletter {
-      padding: 0 0 3rem;
-    }
-
-    .newsletter-box {
-      background: linear-gradient(135deg, #f5ece5, #fbf7f3);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 1.7rem;
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .newsletter-box h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .newsletter-box p {
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 58ch;
-    }
-
-    .newsletter-form {
-      display: flex;
-      gap: 0.7rem;
-      flex-wrap: wrap;
-    }
-
-    .newsletter-form input {
-      min-width: 280px;
-      height: 50px;
-      border-radius: 999px;
-      border: 1px solid var(--line-strong);
-      background: #fff;
-      padding: 0 1rem;
-      outline: none;
-    }
-
-    .footer {
-      background: #fff;
-      border-top: 1px solid var(--line);
-      padding: 2.2rem 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr 1fr;
-      gap: 1.2rem;
-    }
-
-    .footer-brand p {
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 34ch;
-      margin-top: 0.8rem;
-    }
-
-    .footer h4 {
-      font-size: 0.98rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .footer ul {
-      list-style: none;
-      display: grid;
-      gap: 0.6rem;
-    }
-
-    .footer a { color: var(--muted); }
-    .footer a:hover { color: var(--text); }
-
-    .copyright {
-      margin-top: 1.8rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.92rem;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 1180px) {
-      .listing-grid,
-      .hero-box,
-      .newsletter-box,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-      }
-
-      .feature-strip {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 860px) {
-      .header-main {
-        grid-template-columns: 1fr auto;
-        gap: 0.8rem;
-        min-height: 82px;
-      }
-
-      .search {
-        grid-column: 1 / -1;
-        order: 4;
-        padding-bottom: 0.9rem;
-      }
-
-      .feature-strip,
-      .products-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .mobile-filter {
-        display: inline-flex;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .container { width: min(var(--max), calc(100% - 1rem)); }
-      .hero-copy { padding: 1.35rem; }
-      .products-shell { padding: 0.85rem; }
-      .newsletter-form input { min-width: 100%; }
-      .product-cta { flex-direction: column; }
-      .product-cta .btn { width: 100%; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-page="products">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
   <div class="promo-bar">
     <div class="container promo-inner">
-      <span class="promo-pill"><i class="fa-solid fa-tag"></i> Up to 20% off selected premium units</span>
-      <span>Free delivery on eligible orders above GH₵1,500</span>
+      <span class="promo-pill"><i class="fa-solid fa-tag"></i> Shop all collections with live filters</span>
+      <span>Fast dispatch on ready-to-ship units</span>
+      <a href="products.html?collection=sale" class="promo-link">View sale items</a>
     </div>
   </div>
 
-  <header class="header">
-    <div class="container header-main">
-      <a href="index.html" class="brand">
-        <div class="brand-mark"><i class="fa-solid fa-crown"></i></div>
-        <div>
-          <strong>Velvet Crown Wigs</strong>
-          <span>Luxury units, installs & revamps</span>
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <div class="utility-links">
+        <a href="#mobile-filters">Filters</a>
+        <a href="#results-grid">Products</a>
+        <a href="#help-block">Help choosing</a>
+        <a href="#faq">FAQs</a>
+      </div>
+      <div class="utility-meta">
+        <a href="tel:+233000000000"><i class="fa-solid fa-phone"></i> +233 00 000 0000</a>
+        <a href="https://wa.me/233000000000" target="_blank" rel="noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp support</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="header-main-wrap">
+      <div class="container header-main">
+        <button class="mobile-nav-trigger icon-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <a href="index.html" class="brand" aria-label="Velvet Crown Wigs home">
+          <span class="brand-mark"><i class="fa-solid fa-crown"></i></span>
+          <span class="brand-copy">
+            <strong>Velvet Crown Wigs</strong>
+            <span>Luxury units, installs & revamps</span>
+          </span>
+        </a>
+
+        <form class="global-search" action="products.html" method="get" role="search">
+          <label class="sr-only" for="site-search">Search the store</label>
+          <input id="site-search" name="q" type="search" placeholder="Search wigs by texture, lace, color, length..." autocomplete="off" />
+          <button type="submit" aria-label="Search store"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <div class="search-suggestions" hidden>
+            <a href="products.html?q=frontal">Frontal Wigs</a>
+            <a href="products.html?q=closure">Closure Wigs</a>
+            <a href="products.html?q=glueless">Glueless Wigs</a>
+            <a href="products.html?q=body+wave">Body Wave</a>
+          </div>
+        </form>
+
+        <div class="header-actions">
+          <a class="icon-btn desktop-only" href="#account-panel" aria-label="Account"><i class="fa-regular fa-user"></i></a>
+          <button class="icon-btn wishlist-trigger" type="button" aria-label="Wishlist" data-open-panel="wishlist-panel">
+            <i class="fa-regular fa-heart"></i>
+            <span class="count" data-wishlist-count>0</span>
+          </button>
+          <button class="icon-btn cart-trigger" type="button" aria-label="Cart" data-open-panel="cart-panel">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="count" data-cart-count>0</span>
+          </button>
         </div>
-      </a>
-
-      <form class="search">
-        <input type="search" placeholder="Search by lace type, texture, color, density, length..." aria-label="Search wigs" />
-        <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </form>
-
-      <div class="header-actions">
-        <button class="icon-btn" aria-label="Account"><i class="fa-regular fa-user"></i></button>
-        <button class="icon-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i><span class="count">7</span></button>
-        <button class="icon-btn" aria-label="Cart"><i class="fa-solid fa-bag-shopping"></i><span class="count">3</span></button>
       </div>
     </div>
 
-    <nav class="mega-nav">
-      <div class="container mega-inner">
-        <a class="mega-link" href="index.html">Home</a>
-        <a class="mega-link active" href="products.html">All Wigs</a>
-        <a class="mega-link" href="#">Lace Front</a>
-        <a class="mega-link" href="#">Closure</a>
-        <a class="mega-link" href="#">Glueless</a>
-        <a class="mega-link" href="#">Curly</a>
-        <a class="mega-link" href="#">Straight</a>
-        <a class="mega-link" href="#">Colored</a>
-        <a class="mega-link" href="#">Bob</a>
-        <a class="mega-link" href="#">Custom Orders</a>
-        <a class="mega-link" href="#">Services</a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <div class="container nav-row">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop All</a>
+        <a href="products.html?category=lace-front">Lace Front</a>
+        <a href="products.html?category=closure">Closure Wigs</a>
+        <a href="products.html?category=glueless">Glueless Wigs</a>
+        <a href="products.html?category=straight">Straight</a>
+        <a href="products.html?category=curly">Curly</a>
+        <a href="products.html?category=colored">Colored Wigs</a>
+        <a href="products.html?category=bob">Bob Wigs</a>
+        <a href="#help-block">Help</a>
       </div>
     </nav>
+
+    <div class="mobile-menu-drawer" id="mobile-menu" hidden>
+      <div class="mobile-menu-header">
+        <strong>Menu</strong>
+        <button class="icon-btn mobile-nav-close" type="button" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form class="mobile-search" action="products.html" method="get" role="search">
+        <label class="sr-only" for="mobile-site-search">Search the store</label>
+        <input id="mobile-site-search" name="q" type="search" placeholder="Search wigs..." />
+        <button type="submit" aria-label="Search store"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+      <div class="mobile-menu-grid">
+        <a href="products.html">Shop All</a>
+        <a href="products.html?category=lace-front">Lace Front</a>
+        <a href="products.html?category=closure">Closure</a>
+        <a href="products.html?category=glueless">Glueless</a>
+        <a href="products.html?category=straight">Straight</a>
+        <a href="products.html?category=curly">Curly</a>
+        <a href="products.html?category=colored">Colored</a>
+        <a href="products.html?category=bob">Bob</a>
+        <a href="#mobile-filters">Filters</a>
+        <a href="#faq">FAQ</a>
+        <a href="#help-block">Help</a>
+        <a href="https://wa.me/233000000000" target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <div class="container breadcrumbs">
-      <a href="index.html">Home</a> / <span>Shop All Wigs</span>
+  <aside class="side-panel" id="cart-panel" hidden aria-labelledby="cart-title">
+    <div class="side-panel-header">
+      <h2 id="cart-title">Your Cart</h2>
+      <button class="icon-btn close-panel" type="button" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button>
     </div>
+    <div class="side-panel-body cart-items" data-cart-items>
+      <div class="empty-state">
+        <p>Your cart is empty.</p>
+        <a href="#results-grid" class="btn btn-dark">Browse products</a>
+      </div>
+    </div>
+    <div class="side-panel-footer">
+      <div class="cart-summary-row"><span>Subtotal</span><strong data-cart-total>GH₵0</strong></div>
+      <a href="#checkout-panel" class="btn btn-dark full-width">Proceed to Checkout</a>
+    </div>
+  </aside>
 
-    <section class="page-hero">
-      <div class="container hero-box">
-        <div class="hero-copy">
-          <div class="eyebrow"><i class="fa-solid fa-sparkles"></i> Collection page</div>
-          <h1>Shop every wig in one place.</h1>
-          <p>
-            This collection page is built like a real store listing page, with filters, sorting, product swatches, category navigation, ratings, and clean product cards that feel easy to shop.
-          </p>
-          <div class="hero-tags">
-            <span class="hero-tag">HD Lace</span>
-            <span class="hero-tag">Glueless Options</span>
-            <span class="hero-tag">Color Variants</span>
-            <span class="hero-tag">Lengths up to 32&quot;</span>
+  <aside class="side-panel" id="wishlist-panel" hidden aria-labelledby="wishlist-title">
+    <div class="side-panel-header">
+      <h2 id="wishlist-title">Wishlist</h2>
+      <button class="icon-btn close-panel" type="button" aria-label="Close wishlist"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="side-panel-body wishlist-items" data-wishlist-items>
+      <div class="empty-state">
+        <p>No saved items yet.</p>
+        <a href="#results-grid" class="btn btn-dark">Find something</a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="overlay" data-overlay hidden></div>
+
+  <main id="main-content">
+    <section class="collection-hero collection-hero--masonry">
+      <div class="container masonry-home-grid collection-hero-grid">
+        <article class="collection-hero-card collection-hero-card--main">
+          <div class="collection-hero-copy">
+            <span class="eyebrow"><i class="fa-solid fa-layer-group"></i> Shop the full collection</span>
+            <h1>Every texture, lace type, color, and vibe in one page.</h1>
+            <p>Built as a real shopping page with working filters, sorting, category paths, product links, and product actions across desktop and mobile.</p>
+            <div class="hero-actions">
+              <a href="#results-grid" class="btn btn-dark">See Products</a>
+              <a href="#mobile-filters" class="btn btn-light">Open Filters</a>
+            </div>
+            <div class="hero-metrics masonry-mini-grid">
+              <div><strong>24</strong><span>Categories</span></div>
+              <div><strong>184+</strong><span>Products</span></div>
+              <div><strong>4.9/5</strong><span>Avg rating</span></div>
+            </div>
+          </div>
+          <div class="hero-media">
+            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80" alt="Premium wig collection" />
+          </div>
+        </article>
+
+        <a class="hero-tile hero-tile--sale" href="products.html?collection=sale">
+          <div class="hero-tile-copy">
+            <span class="eyebrow">Sale</span>
+            <h2>Wigs on discount</h2>
+            <p>Price cuts on selected straight, curly, frontal, and closure units.</p>
+          </div>
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80" alt="Sale wig collection" />
+        </a>
+
+        <a class="hero-tile hero-tile--guide" href="#help-block">
+          <div class="hero-tile-copy">
+            <span class="eyebrow">Help</span>
+            <h2>Need help choosing?</h2>
+            <p>Compare lengths, lace types, and textures.</p>
+          </div>
+          <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=900&q=80" alt="Wig guide" />
+        </a>
+
+        <a class="hero-tile hero-tile--custom" href="products.html?category=custom">
+          <div class="hero-tile-copy">
+            <span class="eyebrow">Custom</span>
+            <h2>Custom units</h2>
+            <p>Start with your preferred density, color, and size.</p>
+          </div>
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Custom wig collection" />
+        </a>
+      </div>
+    </section>
+
+    <section class="collection-toolbar-section">
+      <div class="container">
+        <div class="collection-breadcrumbs">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>All Wigs</span>
+        </div>
+
+        <div class="collection-toolbar">
+          <div>
+            <span class="eyebrow">Collection</span>
+            <h2>Shop all wigs</h2>
+            <p><strong data-results-count>12</strong> visible products on this page. Use the filters to narrow by category, texture, lace type, color, length, and price.</p>
+          </div>
+
+          <div class="collection-toolbar-actions" id="mobile-filters">
+            <button class="btn btn-light mobile-filters-trigger" type="button" data-open-panel="filters-panel"><i class="fa-solid fa-sliders"></i> Filters</button>
+            <label class="sort-wrap" for="sort-products">
+              <span class="sr-only">Sort products</span>
+              <select id="sort-products" class="sort-select" data-sort-select>
+                <option value="featured">Sort: Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating-high">Top Rated</option>
+                <option value="name-az">Name: A to Z</option>
+              </select>
+            </label>
           </div>
         </div>
-        <div class="hero-media">
-          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80" alt="Premium wig collection display" />
-          <div class="story-card">
-            <h2>184</h2>
-            <p>Products across straight, curly, closure, frontal, colored, and beginner-friendly collections.</p>
-          </div>
+
+        <div class="active-filters-row" data-active-filters>
+          <button class="active-filter-chip is-hidden" type="button" data-clear-filter="category"><span>Category</span><i class="fa-solid fa-xmark"></i></button>
+          <button class="active-filter-chip is-hidden" type="button" data-clear-filter="texture"><span>Texture</span><i class="fa-solid fa-xmark"></i></button>
+          <button class="active-filter-chip is-hidden" type="button" data-clear-filter="lace"><span>Lace</span><i class="fa-solid fa-xmark"></i></button>
+          <button class="active-filter-chip is-hidden" type="button" data-clear-filter="color"><span>Color</span><i class="fa-solid fa-xmark"></i></button>
+          <button class="active-filter-chip is-hidden" type="button" data-clear-filter="length"><span>Length</span><i class="fa-solid fa-xmark"></i></button>
+          <button class="active-filter-chip is-hidden" type="button" data-clear-filter="price"><span>Price</span><i class="fa-solid fa-xmark"></i></button>
+          <button class="clear-all-filters text-link" type="button" data-clear-all>Clear all</button>
         </div>
       </div>
     </section>
 
-    <section class="listing">
-      <div class="container listing-grid">
-        <aside class="sidebar">
-          <div class="filter-card">
-            <div class="filter-header">
+    <section class="collection-main-section">
+      <div class="container collection-main-grid">
+        <aside class="filters-sidebar" aria-label="Product filters">
+          <div class="filters-card sticky-filters">
+            <div class="filters-head">
               <h3>Filters</h3>
-              <a href="#" class="clear-link">Clear all</a>
+              <button class="text-link" type="button" data-clear-all>Reset</button>
             </div>
 
-            <div class="filter-group">
-              <h4>Category</h4>
-              <div class="check-list">
-                <div class="check-row"><label><input type="checkbox" checked /> Lace Front</label><span>42</span></div>
-                <div class="check-row"><label><input type="checkbox" /> Closure Wigs</label><span>31</span></div>
-                <div class="check-row"><label><input type="checkbox" /> Glueless Wigs</label><span>28</span></div>
-                <div class="check-row"><label><input type="checkbox" /> Bob Wigs</label><span>16</span></div>
-                <div class="check-row"><label><input type="checkbox" /> Colored Wigs</label><span>22</span></div>
+            <div class="filter-group" data-filter-group="category">
+              <div class="filter-title-row"><strong>Category</strong></div>
+              <div class="filter-options-grid">
+                <label><input type="radio" name="category" value="all" checked /> All</label>
+                <label><input type="radio" name="category" value="lace-front" /> Lace Front</label>
+                <label><input type="radio" name="category" value="closure" /> Closure</label>
+                <label><input type="radio" name="category" value="glueless" /> Glueless</label>
+                <label><input type="radio" name="category" value="colored" /> Colored</label>
+                <label><input type="radio" name="category" value="bob" /> Bob</label>
               </div>
             </div>
 
-            <div class="filter-group">
-              <h4>Texture</h4>
-              <div class="check-list">
-                <div class="check-row"><label><input type="checkbox" checked /> Body Wave</label><span>24</span></div>
-                <div class="check-row"><label><input type="checkbox" /> Bone Straight</label><span>29</span></div>
-                <div class="check-row"><label><input type="checkbox" /> Deep Wave</label><span>18</span></div>
-                <div class="check-row"><label><input type="checkbox" /> Water Curl</label><span>14</span></div>
-                <div class="check-row"><label><input type="checkbox" /> Jerry Curl</label><span>10</span></div>
+            <div class="filter-group" data-filter-group="texture">
+              <div class="filter-title-row"><strong>Texture</strong></div>
+              <div class="filter-options-grid">
+                <label><input type="radio" name="texture" value="all" checked /> All</label>
+                <label><input type="radio" name="texture" value="body-wave" /> Body Wave</label>
+                <label><input type="radio" name="texture" value="straight" /> Straight</label>
+                <label><input type="radio" name="texture" value="deep-wave" /> Deep Wave</label>
+                <label><input type="radio" name="texture" value="water-curl" /> Water Curl</label>
+                <label><input type="radio" name="texture" value="loose-curl" /> Loose Curl</label>
               </div>
             </div>
 
-            <div class="filter-group">
-              <h4>Color</h4>
-              <div class="swatch-row">
-                <button class="swatch swatch-jet" aria-label="Jet Black"></button>
-                <button class="swatch swatch-natural active" aria-label="Natural Black"></button>
-                <button class="swatch swatch-brown" aria-label="Brown"></button>
-                <button class="swatch swatch-ombre" aria-label="Ombre"></button>
-                <button class="swatch swatch-blonde" aria-label="Blonde"></button>
-                <button class="swatch swatch-burgundy" aria-label="Burgundy"></button>
+            <div class="filter-group" data-filter-group="lace">
+              <div class="filter-title-row"><strong>Lace Type</strong></div>
+              <div class="filter-options-grid">
+                <label><input type="radio" name="lace" value="all" checked /> All</label>
+                <label><input type="radio" name="lace" value="13x4" /> 13x4 Frontal</label>
+                <label><input type="radio" name="lace" value="13x6" /> 13x6 Frontal</label>
+                <label><input type="radio" name="lace" value="5x5" /> 5x5 Closure</label>
+                <label><input type="radio" name="lace" value="6x6" /> 6x6 Closure</label>
+                <label><input type="radio" name="lace" value="glueless-cap" /> Glueless Cap</label>
               </div>
             </div>
 
-            <div class="filter-group">
-              <h4>Length</h4>
-              <div class="check-list">
-                <div class="check-row"><label><input type="checkbox" /> 10&quot; - 14&quot;</label><span>18</span></div>
-                <div class="check-row"><label><input type="checkbox" checked /> 16&quot; - 24&quot;</label><span>63</span></div>
-                <div class="check-row"><label><input type="checkbox" /> 26&quot; - 32&quot;</label><span>37</span></div>
+            <div class="filter-group" data-filter-group="color">
+              <div class="filter-title-row"><strong>Color</strong></div>
+              <div class="filter-swatch-grid" data-choice-group>
+                <button class="swatch filter-swatch active swatch-natural" type="button" data-color-filter="all" aria-label="All colors"></button>
+                <button class="swatch filter-swatch swatch-jet" type="button" data-color-filter="jet-black" aria-label="Jet Black"></button>
+                <button class="swatch filter-swatch swatch-natural" type="button" data-color-filter="natural-black" aria-label="Natural Black"></button>
+                <button class="swatch filter-swatch swatch-brown" type="button" data-color-filter="brown" aria-label="Brown"></button>
+                <button class="swatch filter-swatch swatch-ombre" type="button" data-color-filter="ombre" aria-label="Ombre"></button>
+                <button class="swatch filter-swatch swatch-blonde" type="button" data-color-filter="blonde" aria-label="Blonde"></button>
+                <button class="swatch filter-swatch swatch-burgundy" type="button" data-color-filter="burgundy" aria-label="Burgundy"></button>
               </div>
             </div>
 
-            <div class="filter-group">
-              <h4>Price</h4>
-              <div class="range-box">
-                <input type="range" min="300" max="4000" value="2500" />
-                <div class="range-values"><span>GH₵300</span><span>GH₵2,500</span><span>GH₵4,000</span></div>
+            <div class="filter-group" data-filter-group="length">
+              <div class="filter-title-row"><strong>Length</strong></div>
+              <div class="filter-options-grid">
+                <label><input type="radio" name="length" value="all" checked /> All</label>
+                <label><input type="radio" name="length" value="short" /> 10” - 14”</label>
+                <label><input type="radio" name="length" value="medium" /> 16” - 24”</label>
+                <label><input type="radio" name="length" value="long" /> 26” - 32”</label>
               </div>
             </div>
 
-            <div class="filter-group">
-              <h4>Lace Type</h4>
-              <div class="check-list">
-                <div class="check-row"><label><input type="checkbox" checked /> 13x4 Frontal</label><span>26</span></div>
-                <div class="check-row"><label><input type="checkbox" /> 13x6 Frontal</label><span>12</span></div>
-                <div class="check-row"><label><input type="checkbox" /> 5x5 Closure</label><span>17</span></div>
-                <div class="check-row"><label><input type="checkbox" /> 6x6 Closure</label><span>11</span></div>
+            <div class="filter-group" data-filter-group="price">
+              <div class="filter-title-row"><strong>Price</strong></div>
+              <div class="filter-options-grid">
+                <label><input type="radio" name="price" value="all" checked /> All</label>
+                <label><input type="radio" name="price" value="under-1800" /> Under GH₵1,800</label>
+                <label><input type="radio" name="price" value="1800-2400" /> GH₵1,800 - GH₵2,400</label>
+                <label><input type="radio" name="price" value="2400-3000" /> GH₵2,400 - GH₵3,000</label>
+                <label><input type="radio" name="price" value="3000-plus" /> GH₵3,000+</label>
               </div>
-            </div>
-          </div>
-
-          <div class="promo-card">
-            <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=900&q=80" alt="Custom wig service" />
-            <div class="promo-content">
-              <h3>Need something custom?</h3>
-              <p>Offer a clear route for shoppers who want a different density, custom color, or special construction.</p>
-              <a href="#" class="btn btn-dark">Start Custom Order</a>
             </div>
           </div>
         </aside>
 
-        <div>
-          <div class="feature-strip">
-            <div class="feature-item">
-              <i class="fa-solid fa-truck-fast"></i>
-              <div><strong>Fast dispatch</strong><span>Quick processing for ready-to-ship units.</span></div>
-            </div>
-            <div class="feature-item">
-              <i class="fa-solid fa-circle-check"></i>
-              <div><strong>Quality checked</strong><span>Finished, styled, and inspected before dispatch.</span></div>
-            </div>
-            <div class="feature-item">
-              <i class="fa-solid fa-palette"></i>
-              <div><strong>Color options</strong><span>Choose from blacks, browns, ombre, and more.</span></div>
-            </div>
-            <div class="feature-item">
-              <i class="fa-solid fa-headset"></i>
-              <div><strong>Help on WhatsApp</strong><span>Support if the buyer is unsure what to choose.</span></div>
-            </div>
-          </div>
+        <div class="collection-results">
+          <section class="quick-category-strip masonry-home-grid">
+            <a class="quick-category-card" href="products.html?category=lace-front">Lace Front</a>
+            <a class="quick-category-card" href="products.html?category=closure">Closure</a>
+            <a class="quick-category-card" href="products.html?category=glueless">Glueless</a>
+            <a class="quick-category-card" href="products.html?category=straight">Straight</a>
+            <a class="quick-category-card" href="products.html?category=curly">Curly</a>
+            <a class="quick-category-card" href="products.html?category=colored">Colored</a>
+          </section>
 
-          <div class="products-shell">
-            <div class="toolbar-top">
-              <div>
-                <h3>All Wigs</h3>
-                <p>Showing 1 - 12 of 184 products</p>
+          <section class="products-results-grid masonry-products-grid" id="results-grid" data-results-grid>
+            <article class="product-card product-card--tall" data-product-id="p1" data-name="Velvet Body Wave Frontal" data-category="lace-front" data-texture="body-wave" data-lace="13x4" data-color="natural-black" data-length="long" data-price="2450" data-rating="4.9">
+              <a class="product-media-link" href="product.html?slug=velvet-body-wave-frontal">
+                <div class="product-badges"><span class="badge sale">-18%</span><span class="badge">Best Seller</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Velvet Body Wave Frontal to wishlist" data-product-id="p1"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1000&q=80" alt="Velvet Body Wave Frontal" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Body Wave • 13x4 Frontal</span><span class="stars">★ 4.9</span></div>
+                <h3><a href="product.html?slug=velvet-body-wave-frontal">Velvet Body Wave Frontal</a></h3>
+                <p>Soft premium body wave with HD lace and salon finish.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-natural active" type="button" aria-label="Natural Black"></button>
+                  <button class="swatch swatch-brown" type="button" aria-label="Espresso Brown"></button>
+                  <button class="swatch swatch-ombre" type="button" aria-label="Ombre Melt"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">22” - 32”</span><span class="variant-pill">180% Density</span><span class="variant-pill">HD Lace</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵2,450</span><span class="price-old">GH₵2,990</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=velvet-body-wave-frontal">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p1" data-product-name="Velvet Body Wave Frontal" data-price="2450">Add to Cart</button></div>
               </div>
-              <div class="toolbar-actions">
-                <button class="btn btn-light mobile-filter"><i class="fa-solid fa-sliders"></i> Filters</button>
-                <select class="select" aria-label="Sort products">
-                  <option>Sort by: Featured</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Newest</option>
-                  <option>Best Selling</option>
-                </select>
-                <button class="view-toggle" aria-label="Grid view"><i class="fa-solid fa-grip"></i></button>
+            </article>
+
+            <article class="product-card" data-product-id="p2" data-name="Silk Straight Closure Unit" data-category="closure" data-texture="straight" data-lace="5x5" data-color="jet-black" data-length="medium" data-price="1980" data-rating="4.8">
+              <a class="product-media-link" href="product.html?slug=silk-straight-closure-unit">
+                <div class="product-badges"><span class="badge">New</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Silk Straight Closure Unit to wishlist" data-product-id="p2"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1000&q=80" alt="Silk Straight Closure Unit" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Bone Straight • 5x5 Closure</span><span class="stars">★ 4.8</span></div>
+                <h3><a href="product.html?slug=silk-straight-closure-unit">Silk Straight Closure Unit</a></h3>
+                <p>Beginner-friendly closure wig with a clean silk finish.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-jet active" type="button" aria-label="Jet Black"></button>
+                  <button class="swatch swatch-natural" type="button" aria-label="Natural Black"></button>
+                  <button class="swatch swatch-burgundy" type="button" aria-label="Burgundy"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">14” - 26”</span><span class="variant-pill">Closure</span><span class="variant-pill">180% Density</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵1,980</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=silk-straight-closure-unit">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p2" data-product-name="Silk Straight Closure Unit" data-price="1980">Add to Cart</button></div>
               </div>
+            </article>
+
+            <article class="product-card" data-product-id="p3" data-name="Deep Wave Glueless Wig" data-category="glueless" data-texture="deep-wave" data-lace="glueless-cap" data-color="natural-black" data-length="medium" data-price="2320" data-rating="5.0">
+              <a class="product-media-link" href="product.html?slug=deep-wave-glueless-wig">
+                <div class="product-badges"><span class="badge">Top Rated</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Deep Wave Glueless Wig to wishlist" data-product-id="p3"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=80" alt="Deep Wave Glueless Wig" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Deep Wave • Glueless</span><span class="stars">★ 5.0</span></div>
+                <h3><a href="product.html?slug=deep-wave-glueless-wig">Deep Wave Glueless Wig</a></h3>
+                <p>Defined curls with a secure glueless cap for easy wear.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-natural active" type="button" aria-label="Natural Black"></button>
+                  <button class="swatch swatch-brown" type="button" aria-label="Brown"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">16” - 28”</span><span class="variant-pill">Elastic band</span><span class="variant-pill">Ready to wear</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵2,320</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=deep-wave-glueless-wig">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p3" data-product-name="Deep Wave Glueless Wig" data-price="2320">Add to Cart</button></div>
+              </div>
+            </article>
+
+            <article class="product-card product-card--wide" data-product-id="p4" data-name="Ombre Melt Luxury Unit" data-category="colored" data-texture="straight" data-lace="13x4" data-color="ombre" data-length="medium" data-price="2480" data-rating="4.7">
+              <a class="product-media-link" href="product.html?slug=ombre-melt-luxury-unit">
+                <div class="product-badges"><span class="badge sale">-12%</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Ombre Melt Luxury Unit to wishlist" data-product-id="p4"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=80" alt="Ombre Melt Luxury Unit" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Colored Wig • Frontal</span><span class="stars">★ 4.7</span></div>
+                <h3><a href="product.html?slug=ombre-melt-luxury-unit">Ombre Melt Luxury Unit</a></h3>
+                <p>Fashion-forward multi-tone blend with a polished custom finish.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-ombre active" type="button" aria-label="Ombre"></button>
+                  <button class="swatch swatch-burgundy" type="button" aria-label="Burgundy"></button>
+                  <button class="swatch swatch-blonde" type="button" aria-label="Blonde"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">16” - 28”</span><span class="variant-pill">Frontal</span><span class="variant-pill">Custom shade</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵2,480</span><span class="price-old">GH₵2,820</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=ombre-melt-luxury-unit">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p4" data-product-name="Ombre Melt Luxury Unit" data-price="2480">Add to Cart</button></div>
+              </div>
+            </article>
+
+            <article class="product-card" data-product-id="p5" data-name="Classic Blunt Bob Wig" data-category="bob" data-texture="straight" data-lace="13x4" data-color="jet-black" data-length="short" data-price="1650" data-rating="4.7">
+              <a class="product-media-link" href="product.html?slug=classic-blunt-bob-wig">
+                <div class="product-badges"><span class="badge">Fast Ship</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Classic Blunt Bob Wig to wishlist" data-product-id="p5"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80" alt="Classic Blunt Bob Wig" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Bob Wig • 13x4 Frontal</span><span class="stars">★ 4.7</span></div>
+                <h3><a href="product.html?slug=classic-blunt-bob-wig">Classic Blunt Bob Wig</a></h3>
+                <p>Sharp bob cut with clean finishing and luxury polish.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-jet active" type="button" aria-label="Jet Black"></button>
+                  <button class="swatch swatch-brown" type="button" aria-label="Brown"></button>
+                  <button class="swatch swatch-blonde" type="button" aria-label="Blonde"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">10” - 14”</span><span class="variant-pill">Frontal</span><span class="variant-pill">Custom color</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵1,650</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=classic-blunt-bob-wig">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p5" data-product-name="Classic Blunt Bob Wig" data-price="1650">Add to Cart</button></div>
+              </div>
+            </article>
+
+            <article class="product-card" data-product-id="p6" data-name="Water Curl HD Frontal Wig" data-category="lace-front" data-texture="water-curl" data-lace="13x6" data-color="burgundy" data-length="long" data-price="2780" data-rating="4.8">
+              <a class="product-media-link" href="product.html?slug=water-curl-hd-frontal-wig">
+                <div class="product-badges"><span class="badge">Top Rated</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Water Curl HD Frontal Wig to wishlist" data-product-id="p6"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1000&q=80" alt="Water Curl HD Frontal Wig" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Water Curl • 13x6 Frontal</span><span class="stars">★ 4.8</span></div>
+                <h3><a href="product.html?slug=water-curl-hd-frontal-wig">Water Curl HD Frontal Wig</a></h3>
+                <p>Springy curl pattern with HD lace and beautiful fullness.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-natural" type="button" aria-label="Natural Black"></button>
+                  <button class="swatch swatch-burgundy active" type="button" aria-label="Burgundy"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">18” - 30”</span><span class="variant-pill">200% Density</span><span class="variant-pill">HD Lace</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵2,780</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=water-curl-hd-frontal-wig">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p6" data-product-name="Water Curl HD Frontal Wig" data-price="2780">Add to Cart</button></div>
+              </div>
+            </article>
+
+            <article class="product-card" data-product-id="p7" data-name="AirFit Glueless Straight Wig" data-category="glueless" data-texture="straight" data-lace="glueless-cap" data-color="natural-black" data-length="medium" data-price="2120" data-rating="4.9">
+              <a class="product-media-link" href="product.html?slug=airfit-glueless-straight-wig">
+                <div class="product-badges"><span class="badge">New</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add AirFit Glueless Straight Wig to wishlist" data-product-id="p7"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80" alt="AirFit Glueless Straight Wig" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Straight • Glueless</span><span class="stars">★ 4.9</span></div>
+                <h3><a href="product.html?slug=airfit-glueless-straight-wig">AirFit Glueless Straight Wig</a></h3>
+                <p>Lightweight straight wig with secure fit and sleek finish.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-jet" type="button" aria-label="Jet Black"></button>
+                  <button class="swatch swatch-natural active" type="button" aria-label="Natural Black"></button>
+                  <button class="swatch swatch-brown" type="button" aria-label="Brown"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">14” - 24”</span><span class="variant-pill">Beginner-friendly</span><span class="variant-pill">Adjustable band</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵2,120</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=airfit-glueless-straight-wig">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p7" data-product-name="AirFit Glueless Straight Wig" data-price="2120">Add to Cart</button></div>
+              </div>
+            </article>
+
+            <article class="product-card" data-product-id="p8" data-name="Soft Loose Curl Closure Wig" data-category="closure" data-texture="loose-curl" data-lace="6x6" data-color="brown" data-length="medium" data-price="1890" data-rating="4.9">
+              <a class="product-media-link" href="product.html?slug=soft-loose-curl-closure-wig">
+                <div class="product-badges"><span class="badge">Fan Favorite</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Soft Loose Curl Closure Wig to wishlist" data-product-id="p8"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=80" alt="Soft Loose Curl Closure Wig" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Loose Curl • 6x6 Closure</span><span class="stars">★ 4.9</span></div>
+                <h3><a href="product.html?slug=soft-loose-curl-closure-wig">Soft Loose Curl Closure Wig</a></h3>
+                <p>Defined but soft curl pattern with natural body and fullness.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-natural" type="button" aria-label="Natural Black"></button>
+                  <button class="swatch swatch-brown active" type="button" aria-label="Brown"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">14” - 24”</span><span class="variant-pill">Closure</span><span class="variant-pill">150% Density</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵1,890</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=soft-loose-curl-closure-wig">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p8" data-product-name="Soft Loose Curl Closure Wig" data-price="1890">Add to Cart</button></div>
+              </div>
+            </article>
+
+            <article class="product-card product-card--tall" data-product-id="p9" data-name="Royal Length Straight Unit" data-category="lace-front" data-texture="straight" data-lace="13x4" data-color="brown" data-length="long" data-price="3180" data-rating="4.8">
+              <a class="product-media-link" href="product.html?slug=royal-length-straight-unit">
+                <div class="product-badges"><span class="badge sale">-8%</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Royal Length Straight Unit to wishlist" data-product-id="p9"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?auto=format&fit=crop&w=1000&q=80" alt="Royal Length Straight Unit" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Luxury Long Wig • Frontal</span><span class="stars">★ 4.8</span></div>
+                <h3><a href="product.html?slug=royal-length-straight-unit">Royal Length Straight Unit</a></h3>
+                <p>Extra-long straight unit with polished glam finish and fullness.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-natural" type="button" aria-label="Natural Black"></button>
+                  <button class="swatch swatch-brown active" type="button" aria-label="Brown"></button>
+                  <button class="swatch swatch-burgundy" type="button" aria-label="Burgundy"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">28” - 32”</span><span class="variant-pill">180% Density</span><span class="variant-pill">HD Lace</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵3,180</span><span class="price-old">GH₵3,450</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=royal-length-straight-unit">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p9" data-product-name="Royal Length Straight Unit" data-price="3180">Add to Cart</button></div>
+              </div>
+            </article>
+
+            <article class="product-card" data-product-id="p10" data-name="Wine Silk Closure Wig" data-category="colored" data-texture="straight" data-lace="5x5" data-color="burgundy" data-length="medium" data-price="2040" data-rating="4.7">
+              <a class="product-media-link" href="product.html?slug=wine-silk-closure-wig">
+                <div class="product-badges"><span class="badge">New Color</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Wine Silk Closure Wig to wishlist" data-product-id="p10"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1000&q=80" alt="Wine Silk Closure Wig" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Burgundy Wig • Closure</span><span class="stars">★ 4.7</span></div>
+                <h3><a href="product.html?slug=wine-silk-closure-wig">Wine Silk Closure Wig</a></h3>
+                <p>Rich burgundy finish with glossy straight texture and closure top.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-burgundy active" type="button" aria-label="Burgundy"></button>
+                  <button class="swatch swatch-jet" type="button" aria-label="Jet Black"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">14” - 22”</span><span class="variant-pill">Closure</span><span class="variant-pill">Custom dyed</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵2,040</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=wine-silk-closure-wig">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p10" data-product-name="Wine Silk Closure Wig" data-price="2040">Add to Cart</button></div>
+              </div>
+            </article>
+
+            <article class="product-card" data-product-id="p11" data-name="Everyday Closure Silk Wig" data-category="closure" data-texture="straight" data-lace="5x5" data-color="natural-black" data-length="short" data-price="1420" data-rating="4.6">
+              <a class="product-media-link" href="product.html?slug=everyday-closure-silk-wig">
+                <div class="product-badges"><span class="badge">Ready to Ship</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Everyday Closure Silk Wig to wishlist" data-product-id="p11"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=80" alt="Everyday Closure Silk Wig" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Closure Wig • Straight</span><span class="stars">★ 4.6</span></div>
+                <h3><a href="product.html?slug=everyday-closure-silk-wig">Everyday Closure Silk Wig</a></h3>
+                <p>Simple and polished everyday unit for easy styling and wear.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-jet" type="button" aria-label="Jet Black"></button>
+                  <button class="swatch swatch-natural active" type="button" aria-label="Natural Black"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">12” - 20”</span><span class="variant-pill">Beginner-friendly</span><span class="variant-pill">Ready to wear</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵1,420</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=everyday-closure-silk-wig">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p11" data-product-name="Everyday Closure Silk Wig" data-price="1420">Add to Cart</button></div>
+              </div>
+            </article>
+
+            <article class="product-card" data-product-id="p12" data-name="Runway Straight Frontal Wig" data-category="lace-front" data-texture="straight" data-lace="13x4" data-color="blonde" data-length="long" data-price="2640" data-rating="4.8">
+              <a class="product-media-link" href="product.html?slug=runway-straight-frontal-wig">
+                <div class="product-badges"><span class="badge">Trending</span></div>
+                <button class="wishlist-btn" type="button" aria-label="Add Runway Straight Frontal Wig to wishlist" data-product-id="p12"><i class="fa-regular fa-heart"></i></button>
+                <div class="product-media"><img src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?auto=format&fit=crop&w=1000&q=80" alt="Runway Straight Frontal Wig" /></div>
+              </a>
+              <div class="product-info">
+                <div class="meta-row"><span>Bone Straight • 13x4 Frontal</span><span class="stars">★ 4.8</span></div>
+                <h3><a href="product.html?slug=runway-straight-frontal-wig">Runway Straight Frontal Wig</a></h3>
+                <p>Long and sleek with a soft luxury salon shine.</p>
+                <div class="swatches" data-choice-group>
+                  <button class="swatch swatch-natural" type="button" aria-label="Natural Black"></button>
+                  <button class="swatch swatch-brown" type="button" aria-label="Brown"></button>
+                  <button class="swatch swatch-blonde active" type="button" aria-label="Highlight Blonde"></button>
+                </div>
+                <div class="variant-bar"><span class="variant-pill">20” - 32”</span><span class="variant-pill">150% Density</span><span class="variant-pill">Pre-plucked</span></div>
+                <div class="price-row"><div><span class="price-main">GH₵2,640</span></div><span class="stock">In stock</span></div>
+                <div class="product-cta"><a class="btn btn-light" href="product.html?slug=runway-straight-frontal-wig">View Product</a><button class="btn btn-dark add-to-cart-btn" type="button" data-product-id="p12" data-product-name="Runway Straight Frontal Wig" data-price="2640">Add to Cart</button></div>
+              </div>
+            </article>
+          </section>
+
+          <section class="help-block-section" id="help-block">
+            <div class="help-block-card masonry-home-grid">
+              <article class="help-copy-card">
+                <span class="eyebrow">Need help choosing?</span>
+                <h2>Use the filters like a real store assistant.</h2>
+                <p>Filter by category, texture, lace, color, length, and price. If you still need help, use the WhatsApp route for guided recommendations.</p>
+                <div class="help-action-grid">
+                  <a href="https://wa.me/233000000000?text=Hi%20I%20need%20help%20choosing%20a%20wig" class="btn btn-dark" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
+                  <a href="product.html?slug=velvet-body-wave-frontal" class="btn btn-light">See best seller</a>
+                </div>
+              </article>
+              <article class="help-mini-card"><strong>Best for beginners</strong><p>Closure wigs and glueless units are usually easier to wear.</p></article>
+              <article class="help-mini-card"><strong>Most natural look</strong><p>Frontal units provide the most natural and flexible hairline effect.</p></article>
+              <article class="help-mini-card"><strong>For bold color</strong><p>Use the colored filter to find blonde, ombre, and burgundy options fast.</p></article>
             </div>
+          </section>
 
-            <div class="active-filters">
-              <span class="active-pill">Lace Front <i class="fa-solid fa-xmark"></i></span>
-              <span class="active-pill">Body Wave <i class="fa-solid fa-xmark"></i></span>
-              <span class="active-pill">16&quot; - 24&quot; <i class="fa-solid fa-xmark"></i></span>
-              <span class="active-pill">Natural Black <i class="fa-solid fa-xmark"></i></span>
-            </div>
-
-            <div class="products-grid">
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge sale">-18%</span>
-                  <span class="badge">Best Seller</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Body wave lace frontal wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Body Wave • 13x4 Frontal</span><span class="stars">★ 4.9</span></div>
-                  <h3>Velvet Body Wave Frontal</h3>
-                  <p>Soft, premium texture with HD lace and a luxury salon finish.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-natural active" aria-label="Natural Black"></button>
-                    <button class="swatch swatch-brown" aria-label="Espresso Brown"></button>
-                    <button class="swatch swatch-ombre" aria-label="Ombre"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">22&quot; - 32&quot;</span>
-                    <span class="variant-pill">150% Density</span>
-                    <span class="variant-pill">HD Lace</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵2,450</span><span class="price-old">GH₵2,990</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge new">New</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80" alt="Straight closure wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Bone Straight • 5x5 Closure</span><span class="stars">★ 4.8</span></div>
-                  <h3>Silk Straight Closure Unit</h3>
-                  <p>Neat silk press finish with beginner-friendly closure construction.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-jet active" aria-label="Jet Black"></button>
-                    <button class="swatch swatch-natural" aria-label="Natural Black"></button>
-                    <button class="swatch swatch-burgundy" aria-label="Burgundy"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">14&quot; - 26&quot;</span>
-                    <span class="variant-pill">180% Density</span>
-                    <span class="variant-pill">Closure</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵1,980</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge">Top Rated</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" alt="Deep wave glueless wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Deep Wave • Glueless</span><span class="stars">★ 5.0</span></div>
-                  <h3>Deep Wave Glueless Wig</h3>
-                  <p>Defined curls, secure cap, and a ready-to-wear fit with soft volume.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-natural active" aria-label="Natural Black"></button>
-                    <button class="swatch swatch-brown" aria-label="Brown"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">16&quot; - 28&quot;</span>
-                    <span class="variant-pill">Elastic band</span>
-                    <span class="variant-pill">Ready to wear</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵2,320</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge fast">Fast Shipping</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Blunt bob wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Bob Wig • 13x4 Frontal</span><span class="stars">★ 4.7</span></div>
-                  <h3>Classic Blunt Bob Wig</h3>
-                  <p>Structured cut with polished ends and a luxury finished silhouette.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-jet active" aria-label="Jet Black"></button>
-                    <button class="swatch swatch-brown" aria-label="Brown"></button>
-                    <button class="swatch swatch-blonde" aria-label="Honey Blonde"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">10&quot; - 14&quot;</span>
-                    <span class="variant-pill">Frontal</span>
-                    <span class="variant-pill">Custom color</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵1,650</span></div>
-                    <span class="stock low">Low stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge sale">-10%</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=900&q=80" alt="Water curl frontal wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Water Curl • 13x6 Frontal</span><span class="stars">★ 4.8</span></div>
-                  <h3>Water Curl HD Frontal Wig</h3>
-                  <p>Springy wet-look curls with invisible lace and beautiful fullness.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-natural active" aria-label="Natural Black"></button>
-                    <button class="swatch swatch-burgundy" aria-label="Burgundy"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">18&quot; - 30&quot;</span>
-                    <span class="variant-pill">200% Density</span>
-                    <span class="variant-pill">HD Lace</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵2,780</span><span class="price-old">GH₵3,090</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge new">Just Added</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Glueless straight wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Straight • Glueless</span><span class="stars">★ 4.9</span></div>
-                  <h3>AirFit Glueless Straight Wig</h3>
-                  <p>Lightweight and secure with a sleek finish for easy everyday wear.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-jet active" aria-label="Jet Black"></button>
-                    <button class="swatch swatch-natural" aria-label="Natural Black"></button>
-                    <button class="swatch swatch-brown" aria-label="Brown"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">14&quot; - 24&quot;</span>
-                    <span class="variant-pill">Beginner-friendly</span>
-                    <span class="variant-pill">Adjustable band</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵2,120</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge">Trending</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?auto=format&fit=crop&w=900&q=80" alt="Straight frontal wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Bone Straight • 13x4 Frontal</span><span class="stars">★ 4.8</span></div>
-                  <h3>Runway Straight Frontal Wig</h3>
-                  <p>Sleek, long, and polished with a soft salon-level shine and movement.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-natural active" aria-label="Natural Black"></button>
-                    <button class="swatch swatch-brown" aria-label="Espresso Brown"></button>
-                    <button class="swatch swatch-blonde" aria-label="Highlight Blonde"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">20&quot; - 32&quot;</span>
-                    <span class="variant-pill">150% Density</span>
-                    <span class="variant-pill">Pre-plucked</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵2,640</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge sale">-12%</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Colored wig unit" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Colored Wig • Frontal</span><span class="stars">★ 4.7</span></div>
-                  <h3>Ombre Melt Luxury Unit</h3>
-                  <p>Multi-tonal blend with a soft transition and stylish custom-finished color.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-ombre active" aria-label="Ombre"></button>
-                    <button class="swatch swatch-burgundy" aria-label="Burgundy"></button>
-                    <button class="swatch swatch-blonde" aria-label="Blonde"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">16&quot; - 28&quot;</span>
-                    <span class="variant-pill">Custom shade</span>
-                    <span class="variant-pill">Frontal</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵2,480</span><span class="price-old">GH₵2,820</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge fast">Ready to Ship</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Closure wig ready to ship" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Closure Wig • Straight</span><span class="stars">★ 4.6</span></div>
-                  <h3>Everyday Closure Silk Wig</h3>
-                  <p>Clean and simple everyday unit for shoppers who want easy wear and neat styling.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-jet active" aria-label="Jet Black"></button>
-                    <button class="swatch swatch-natural" aria-label="Natural Black"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">12&quot; - 20&quot;</span>
-                    <span class="variant-pill">Beginner-friendly</span>
-                    <span class="variant-pill">Ready to wear</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵1,420</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge">Fan Favorite</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80" alt="Loose curl wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Loose Curl • Closure</span><span class="stars">★ 4.9</span></div>
-                  <h3>Soft Loose Curl Closure Wig</h3>
-                  <p>Defined but soft curl pattern with a flattering, natural-looking shape.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-natural active" aria-label="Natural Black"></button>
-                    <button class="swatch swatch-brown" aria-label="Brown"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">14&quot; - 24&quot;</span>
-                    <span class="variant-pill">Closure</span>
-                    <span class="variant-pill">150% Density</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵1,890</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge sale">-8%</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?auto=format&fit=crop&w=900&q=80" alt="Luxury long wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Luxury Long Wig • Frontal</span><span class="stars">★ 4.8</span></div>
-                  <h3>Royal Length Straight Unit</h3>
-                  <p>Extra-long luxury straight wig for shoppers who want full glam and length.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-natural active" aria-label="Natural Black"></button>
-                    <button class="swatch swatch-brown" aria-label="Brown"></button>
-                    <button class="swatch swatch-burgundy" aria-label="Burgundy"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">28&quot; - 32&quot;</span>
-                    <span class="variant-pill">180% Density</span>
-                    <span class="variant-pill">HD Lace</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵3,180</span><span class="price-old">GH₵3,450</span></div>
-                    <span class="stock low">Low stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-badges">
-                  <span class="badge new">New Color</span>
-                </div>
-                <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
-                <div class="product-media">
-                  <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=80" alt="Burgundy wig" />
-                </div>
-                <div class="product-info">
-                  <div class="meta-row"><span>Burgundy Wig • Closure</span><span class="stars">★ 4.7</span></div>
-                  <h3>Wine Silk Closure Wig</h3>
-                  <p>Rich burgundy finish with a glossy straight texture and polished closure top.</p>
-                  <div class="swatches">
-                    <button class="swatch swatch-burgundy active" aria-label="Burgundy"></button>
-                    <button class="swatch swatch-jet" aria-label="Jet Black"></button>
-                  </div>
-                  <div class="variant-bar">
-                    <span class="variant-pill">14&quot; - 22&quot;</span>
-                    <span class="variant-pill">Closure</span>
-                    <span class="variant-pill">Custom dyed</span>
-                  </div>
-                  <div class="price-row">
-                    <div><span class="price-main">GH₵2,040</span></div>
-                    <span class="stock">In stock</span>
-                  </div>
-                  <div class="product-cta">
-                    <a class="btn btn-dark" href="product.html">Quick View</a>
-                    <button class="btn btn-light">Add to Cart</button>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <div class="pagination">
-              <button class="page-btn"><i class="fa-solid fa-angle-left"></i></button>
-              <button class="page-btn active">1</button>
-              <button class="page-btn">2</button>
-              <button class="page-btn">3</button>
-              <button class="page-btn">4</button>
-              <button class="page-btn"><i class="fa-solid fa-angle-right"></i></button>
-            </div>
-          </div>
+          <section class="faq-section small-faq" id="faq">
+            <details class="faq-item" open>
+              <summary>How do these filters work?</summary>
+              <p>The filters narrow the visible products on the page by matching the category, texture, lace, color, length, and price tags attached to each product card.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I still order on WhatsApp?</summary>
+              <p>Yes. The cart flow can coexist with WhatsApp ordering for customers who want extra guidance.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Will the product colors change?</summary>
+              <p>The swatches update the active selection state and are designed to work with the full product page behavior too.</p>
+            </details>
+          </section>
         </div>
       </div>
     </section>
 
-    <section class="newsletter">
-      <div class="container newsletter-box">
-        <div>
-          <h3>Get first access to new drops.</h3>
-          <p>Use this section for launches, restocks, promo drops, and special offers on best-selling units.</p>
-        </div>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Enter your email address" aria-label="Email address" />
-          <button class="btn btn-dark" type="submit">Subscribe</button>
-        </form>
+    <aside class="mobile-filters-panel" id="filters-panel" hidden aria-labelledby="filters-title">
+      <div class="mobile-filters-header">
+        <h2 id="filters-title">Filters</h2>
+        <button class="icon-btn close-panel" type="button" aria-label="Close filters"><i class="fa-solid fa-xmark"></i></button>
       </div>
-    </section>
+      <div class="mobile-filters-body">
+        <div class="filter-group" data-filter-group="category-mobile">
+          <div class="filter-title-row"><strong>Category</strong></div>
+          <div class="mobile-filter-chip-grid" data-mobile-filter-group="category">
+            <button class="chip active" type="button" data-filter-value="all">All</button>
+            <button class="chip" type="button" data-filter-value="lace-front">Lace Front</button>
+            <button class="chip" type="button" data-filter-value="closure">Closure</button>
+            <button class="chip" type="button" data-filter-value="glueless">Glueless</button>
+            <button class="chip" type="button" data-filter-value="colored">Colored</button>
+            <button class="chip" type="button" data-filter-value="bob">Bob</button>
+          </div>
+        </div>
+
+        <div class="filter-group" data-filter-group="texture-mobile">
+          <div class="filter-title-row"><strong>Texture</strong></div>
+          <div class="mobile-filter-chip-grid" data-mobile-filter-group="texture">
+            <button class="chip active" type="button" data-filter-value="all">All</button>
+            <button class="chip" type="button" data-filter-value="body-wave">Body Wave</button>
+            <button class="chip" type="button" data-filter-value="straight">Straight</button>
+            <button class="chip" type="button" data-filter-value="deep-wave">Deep Wave</button>
+            <button class="chip" type="button" data-filter-value="water-curl">Water Curl</button>
+            <button class="chip" type="button" data-filter-value="loose-curl">Loose Curl</button>
+          </div>
+        </div>
+
+        <div class="filter-group" data-filter-group="length-mobile">
+          <div class="filter-title-row"><strong>Length</strong></div>
+          <div class="mobile-filter-chip-grid" data-mobile-filter-group="length">
+            <button class="chip active" type="button" data-filter-value="all">All</button>
+            <button class="chip" type="button" data-filter-value="short">10” - 14”</button>
+            <button class="chip" type="button" data-filter-value="medium">16” - 24”</button>
+            <button class="chip" type="button" data-filter-value="long">26” - 32”</button>
+          </div>
+        </div>
+
+        <div class="filter-group" data-filter-group="price-mobile">
+          <div class="filter-title-row"><strong>Price</strong></div>
+          <div class="mobile-filter-chip-grid" data-mobile-filter-group="price">
+            <button class="chip active" type="button" data-filter-value="all">All</button>
+            <button class="chip" type="button" data-filter-value="under-1800">Under 1,800</button>
+            <button class="chip" type="button" data-filter-value="1800-2400">1,800 - 2,400</button>
+            <button class="chip" type="button" data-filter-value="2400-3000">2,400 - 3,000</button>
+            <button class="chip" type="button" data-filter-value="3000-plus">3,000+</button>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-filters-footer">
+        <button class="btn btn-light" type="button" data-clear-all>Clear all</button>
+        <button class="btn btn-dark close-panel" type="button">Show products</button>
+      </div>
+    </aside>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="brand">
-            <div class="brand-mark"><i class="fa-solid fa-crown"></i></div>
-            <div>
-              <strong>Velvet Crown Wigs</strong>
-              <span>Luxury units, installs & revamps</span>
-            </div>
-          </a>
-          <p>A polished ecommerce collection page designed to feel like a real wig shop with filters, swatches, and browsable product listings.</p>
-        </div>
-
-        <div>
-          <h4>Shop</h4>
-          <ul>
-            <li><a href="#">Lace Front Wigs</a></li>
-            <li><a href="#">Closure Wigs</a></li>
-            <li><a href="#">Glueless Wigs</a></li>
-            <li><a href="#">Colored Wigs</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Support</h4>
-          <ul>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Shipping Policy</a></li>
-            <li><a href="#">Returns</a></li>
-            <li><a href="#">Track Order</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="#">WhatsApp: +233 00 000 0000</a></li>
-            <li><a href="#">Instagram: @velvetcrownwigs</a></li>
-            <li><a href="#">Email: hello@velvetcrownwigs.com</a></li>
-            <li><a href="#">Accra, Ghana</a></li>
-          </ul>
-        </div>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><i class="fa-solid fa-crown"></i></span>
+          <span class="brand-copy">
+            <strong>Velvet Crown Wigs</strong>
+            <span>Luxury units, installs & revamps</span>
+          </span>
+        </a>
+        <p>A collection page rebuilt around a stronger responsive store system with working filters, product actions, panels, and search.</p>
       </div>
 
-      <div class="copyright">
-        <span>© 2026 Velvet Crown Wigs. All rights reserved.</span>
-        <span>Next best page to build: product.html with gallery, variants, reviews, and sticky buy box.</span>
+      <div>
+        <h4>Collections</h4>
+        <ul>
+          <li><a href="products.html?category=lace-front">Lace Front</a></li>
+          <li><a href="products.html?category=closure">Closure</a></li>
+          <li><a href="products.html?category=glueless">Glueless</a></li>
+          <li><a href="products.html?category=colored">Colored</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#help-block">Help choosing</a></li>
+          <li><a href="#faq">FAQs</a></li>
+          <li><a href="https://wa.me/233000000000" target="_blank" rel="noreferrer">WhatsApp</a></li>
+          <li><a href="product.html?slug=velvet-body-wave-frontal">Best seller</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Store</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#results-grid">Products</a></li>
+          <li><a href="#mobile-filters">Filters</a></li>
+          <li><a href="#top">Back to top</a></li>
+        </ul>
       </div>
     </div>
+
+    <div class="container copyright">
+      <span>© 2026 Velvet Crown Wigs. All rights reserved.</span>
+      <span><a href="#top">Back to top</a></span>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
