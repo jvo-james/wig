@@ -1,962 +1,292 @@
-(() => {
-  'use strict';
+// script.js
 
-  const STORAGE_KEYS = {
-    cart: 'velvet_crown_cart',
-    wishlist: 'velvet_crown_wishlist'
-  };
+document.addEventListener("DOMContentLoaded", () => {
+  const qs = (sel, parent = document) => parent.querySelector(sel);
+  const qsa = (sel, parent = document) => Array.from(parent.querySelectorAll(sel));
 
-  const PRODUCT_CATALOG = {
-    p1: {
-      id: 'p1',
-      name: 'Velvet Body Wave Frontal',
-      price: 2450,
-      image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=velvet-body-wave-frontal'
-    },
-    p2: {
-      id: 'p2',
-      name: 'Silk Straight Closure Unit',
-      price: 1980,
-      image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=silk-straight-closure-unit'
-    },
-    p3: {
-      id: 'p3',
-      name: 'Deep Wave Glueless Wig',
-      price: 2320,
-      image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=deep-wave-glueless-wig'
-    },
-    p4: {
-      id: 'p4',
-      name: 'Ombre Melt Luxury Unit',
-      price: 2480,
-      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=ombre-melt-luxury-unit'
-    },
-    p5: {
-      id: 'p5',
-      name: 'Classic Blunt Bob Wig',
-      price: 1650,
-      image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=classic-blunt-bob-wig'
-    },
-    p6: {
-      id: 'p6',
-      name: 'Water Curl HD Frontal Wig',
-      price: 2780,
-      image: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=water-curl-hd-frontal-wig'
-    },
-    p7: {
-      id: 'p7',
-      name: 'AirFit Glueless Straight Wig',
-      price: 2120,
-      image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=airfit-glueless-straight-wig'
-    },
-    p8: {
-      id: 'p8',
-      name: 'Soft Loose Curl Closure Wig',
-      price: 1890,
-      image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=soft-loose-curl-closure-wig'
-    },
-    p9: {
-      id: 'p9',
-      name: 'Royal Length Straight Unit',
-      price: 3180,
-      image: 'https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=royal-length-straight-unit'
-    },
-    p10: {
-      id: 'p10',
-      name: 'Wine Silk Closure Wig',
-      price: 2040,
-      image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=wine-silk-closure-wig'
-    },
-    p11: {
-      id: 'p11',
-      name: 'Everyday Closure Silk Wig',
-      price: 1420,
-      image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=everyday-closure-silk-wig'
-    },
-    p12: {
-      id: 'p12',
-      name: 'Runway Straight Frontal Wig',
-      price: 2640,
-      image: 'https://images.unsplash.com/photo-1506863530036-1efeddceb993?auto=format&fit=crop&w=600&q=80',
-      link: 'product.html?slug=runway-straight-frontal-wig'
+  const body = document.body;
+  const mobileMenuBtn = qs(".mobile-menu-btn");
+  const mainNav = qs(".main-nav");
+
+  const productStorageKey = "gg_selected_product";
+
+  function showToast(message) {
+    let toast = qs(".gg-toast");
+
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "gg-toast";
+      toast.setAttribute("role", "status");
+      toast.setAttribute("aria-live", "polite");
+      toast.style.position = "fixed";
+      toast.style.left = "50%";
+      toast.style.bottom = "24px";
+      toast.style.transform = "translateX(-50%)";
+      toast.style.padding = "12px 18px";
+      toast.style.borderRadius = "999px";
+      toast.style.background = "rgba(20, 20, 20, 0.94)";
+      toast.style.color = "#fff";
+      toast.style.fontSize = "14px";
+      toast.style.letterSpacing = "0.02em";
+      toast.style.zIndex = "9999";
+      toast.style.opacity = "0";
+      toast.style.pointerEvents = "none";
+      toast.style.transition = "opacity 0.25s ease, transform 0.25s ease";
+      toast.style.boxShadow = "0 10px 30px rgba(0,0,0,0.18)";
+      document.body.appendChild(toast);
     }
-  };
 
-  const $ = (selector, scope = document) => scope.querySelector(selector);
-  const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+    toast.textContent = message;
+    toast.style.opacity = "1";
+    toast.style.transform = "translateX(-50%) translateY(0)";
 
-  const state = {
-    cart: loadStorage(STORAGE_KEYS.cart, []),
-    wishlist: loadStorage(STORAGE_KEYS.wishlist, []),
-    products: [],
-    filters: {
-      category: 'all',
-      texture: 'all',
-      lace: 'all',
-      color: 'all',
-      length: 'all',
-      price: 'all'
-    },
-    sort: 'featured',
-    openPanel: null,
-    openDrawer: null
-  };
-
-  function loadStorage(key, fallback) {
-    try {
-      const raw = window.localStorage.getItem(key);
-      if (!raw) return fallback;
-      const parsed = JSON.parse(raw);
-      return Array.isArray(parsed) ? parsed : fallback;
-    } catch {
-      return fallback;
-    }
-  }
-
-  function saveStorage(key, value) {
-    try {
-      window.localStorage.setItem(key, JSON.stringify(value));
-    } catch {
-      // ignore storage failures
-    }
-  }
-
-  function formatPrice(value) {
-    return `GH₵${Number(value).toLocaleString()}`;
-  }
-
-  function createToastContainer() {
-    let container = $('.toast-container');
-    if (container) return container;
-
-    container = document.createElement('div');
-    container.className = 'toast-container';
-    document.body.appendChild(container);
-    return container;
-  }
-
-  function toast(message) {
-    const container = createToastContainer();
-    const item = document.createElement('div');
-    item.className = 'app-toast';
-    item.textContent = message;
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(8px)';
-    item.style.transition = 'opacity 180ms ease, transform 180ms ease';
-    container.appendChild(item);
-
-    requestAnimationFrame(() => {
-      item.style.opacity = '1';
-      item.style.transform = 'translateY(0)';
-    });
-
-    window.setTimeout(() => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateY(8px)';
-      window.setTimeout(() => item.remove(), 220);
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => {
+      toast.style.opacity = "0";
+      toast.style.transform = "translateX(-50%) translateY(8px)";
     }, 2200);
   }
 
-  function announce(message) {
-    let region = $('#live-region');
-    if (!region) {
-      region = document.createElement('div');
-      region.id = 'live-region';
-      region.className = 'sr-only';
-      region.setAttribute('aria-live', 'polite');
-      region.setAttribute('aria-atomic', 'true');
-      document.body.appendChild(region);
-    }
-    region.textContent = message;
+  function closeMobileMenu() {
+    if (!mainNav || !mobileMenuBtn) return;
+    mainNav.classList.remove("open");
+    body.classList.remove("nav-open");
+    mobileMenuBtn.setAttribute("aria-expanded", "false");
   }
 
-  function getProductFromButton(button) {
-    const id = button.dataset.productId;
-    if (id && PRODUCT_CATALOG[id]) return PRODUCT_CATALOG[id];
-
-    const card = button.closest('[data-product-id]');
-    const fallbackId = card?.dataset.productId;
-    if (fallbackId && PRODUCT_CATALOG[fallbackId]) return PRODUCT_CATALOG[fallbackId];
-
-    const name = button.dataset.productName || card?.dataset.name || 'Product';
-    const price = Number(button.dataset.price || card?.dataset.price || 0);
-    const image = $('img', card)?.src || '';
-    const link = $('a[href*="product.html"]', card)?.getAttribute('href') || '#';
-
-    return {
-      id: fallbackId || name.toLowerCase().replace(/\s+/g, '-'),
-      name,
-      price,
-      image,
-      link
-    };
+  function toggleMobileMenu() {
+    if (!mainNav || !mobileMenuBtn) return;
+    const isOpen = mainNav.classList.toggle("open");
+    body.classList.toggle("nav-open", isOpen);
+    mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
   }
 
-  function syncCountBadges() {
-    $$('[data-cart-count]').forEach((node) => {
-      const totalQty = state.cart.reduce((sum, item) => sum + item.quantity, 0);
-      node.textContent = String(totalQty);
+  if (mobileMenuBtn && mainNav) {
+    mobileMenuBtn.setAttribute("aria-expanded", "false");
+    mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+
+    qsa(".main-nav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 900) closeMobileMenu();
+      });
     });
 
-    $$('[data-wishlist-count]').forEach((node) => {
-      node.textContent = String(state.wishlist.length);
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth > 900) return;
+      const clickedInsideHeader = e.target.closest(".site-header");
+      if (!clickedInsideHeader) closeMobileMenu();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) closeMobileMenu();
     });
   }
 
-  function renderCart() {
-    const target = $('[data-cart-items]');
-    const totalNode = $('[data-cart-total]');
-    if (!target) return;
+  // Mark the current nav link as active
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  qsa(".main-nav a").forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    const target = href.split("#")[0] || "index.html";
+    const isHashLink = href.startsWith("#");
+    const isActive =
+      (!isHashLink && target === currentPath) ||
+      (currentPath === "" && target === "index.html");
 
-    target.innerHTML = '';
+    if (isActive) link.classList.add("active");
+  });
 
-    if (!state.cart.length) {
-      target.innerHTML = `
-        <div class="empty-state">
-          <p>Your cart is empty.</p>
-          <a href="products.html" class="btn btn-dark">Shop now</a>
-        </div>
-      `;
-      if (totalNode) totalNode.textContent = formatPrice(0);
-      return;
-    }
+  // Smooth scroll for on-page links
+  qsa('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href");
+      if (!targetId || targetId === "#") return;
 
-    const fragment = document.createDocumentFragment();
-    let total = 0;
+      const target = qs(targetId);
+      if (!target) return;
 
-    state.cart.forEach((item) => {
-      total += item.price * item.quantity;
-      const row = document.createElement('div');
-      row.className = 'cart-item';
-      row.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" />
-        <div class="item-copy">
-          <strong>${item.name}</strong>
-          <span>${formatPrice(item.price)} each</span>
-          <span>Quantity: ${item.quantity}</span>
-        </div>
-        <div class="item-actions">
-          <button class="item-mini-btn" type="button" data-cart-action="decrease" data-product-id="${item.id}">−</button>
-          <button class="item-mini-btn" type="button" data-cart-action="increase" data-product-id="${item.id}">+</button>
-          <button class="item-mini-btn" type="button" data-cart-action="remove" data-product-id="${item.id}">Remove</button>
-        </div>
-      `;
-      fragment.appendChild(row);
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+  });
 
-    target.appendChild(fragment);
-    if (totalNode) totalNode.textContent = formatPrice(total);
-  }
+  // Product card click tracking to make product.html dynamic
+  qsa(".product-card").forEach((card) => {
+    const titleEl = qs("h3", card);
+    const priceEl = qs(".price", card);
+    const imgEl = qs("img", card);
+    const linkEl = qs('a[href="product.html"]', card);
 
-  function renderWishlist() {
-    const target = $('[data-wishlist-items]');
-    if (!target) return;
+    if (!linkEl) return;
 
-    target.innerHTML = '';
+    linkEl.addEventListener("click", () => {
+      const productData = {
+        title: titleEl ? titleEl.textContent.trim() : "Luxury Wig",
+        price: priceEl ? priceEl.textContent.trim() : "$180.00 USD",
+        image: imgEl ? imgEl.getAttribute("src") : "hero.webp",
+        alt: imgEl ? imgEl.getAttribute("alt") || titleEl?.textContent.trim() || "Product image" : "Product image",
+        summary: "",
+        badge: "Best Seller"
+      };
 
-    if (!state.wishlist.length) {
-      target.innerHTML = `
-        <div class="empty-state">
-          <p>No saved items yet.</p>
-          <a href="products.html" class="btn btn-dark">Discover wigs</a>
-        </div>
-      `;
-      syncWishlistButtons();
-      return;
-    }
-
-    const fragment = document.createDocumentFragment();
-
-    state.wishlist.forEach((item) => {
-      const row = document.createElement('div');
-      row.className = 'wishlist-item';
-      row.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" />
-        <div class="item-copy">
-          <strong>${item.name}</strong>
-          <span>${formatPrice(item.price)}</span>
-          <span><a href="${item.link}">View product</a></span>
-        </div>
-        <div class="item-actions">
-          <button class="item-mini-btn" type="button" data-wishlist-action="cart" data-product-id="${item.id}">Add to cart</button>
-          <button class="item-mini-btn" type="button" data-wishlist-action="remove" data-product-id="${item.id}">Remove</button>
-        </div>
-      `;
-      fragment.appendChild(row);
-    });
-
-    target.appendChild(fragment);
-    syncWishlistButtons();
-  }
-
-  function syncWishlistButtons() {
-    const wishlistIds = new Set(state.wishlist.map((item) => item.id));
-    $$('[data-product-id].wishlist-btn, .wishlist-btn[data-product-id]').forEach((button) => {
-      const id = button.dataset.productId;
-      const icon = $('i', button);
-      const active = wishlistIds.has(id);
-      button.classList.toggle('is-active', active);
-      if (icon) {
-        icon.classList.toggle('fa-regular', !active);
-        icon.classList.toggle('fa-solid', active);
+      const title = productData.title.toLowerCase();
+      if (title.includes("copper")) {
+        productData.badge = "Statement";
+        productData.summary = "A bold, warm-toned look with volume and shine for standout glam.";
+      } else if (title.includes("frontal")) {
+        productData.badge = "Frontals";
+        productData.summary = "A polished frontal style with a natural-looking hairline and soft movement.";
+      } else if (title.includes("closure")) {
+        productData.badge = "Easy Wear";
+        productData.summary = "A low-maintenance luxury style made for effortless wear.";
+      } else if (title.includes("extensions") || title.includes("clip-in")) {
+        productData.badge = "Popular";
+        productData.summary = "Quick volume and instant fullness with a seamless blend.";
+      } else if (title.includes("straight")) {
+        productData.badge = "Silky";
+        productData.summary = "Glossy, sleek, and ultra refined with a runway-inspired finish.";
+      } else if (title.includes("wave") || title.includes("body")) {
+        productData.badge = "Best Seller";
+        productData.summary = "A soft, flowing texture with rich body and beautiful movement.";
+      } else {
+        productData.summary = "A premium style designed to look soft, full, and elegant.";
       }
+
+      sessionStorage.setItem(productStorageKey, JSON.stringify(productData));
     });
-  }
+  });
 
-  function addToCart(product, quantity = 1) {
-    const existing = state.cart.find((item) => item.id === product.id);
-    if (existing) {
-      existing.quantity += quantity;
-    } else {
-      state.cart.push({ ...product, quantity });
-    }
+  // Make product.html dynamic
+  const storedProductRaw = sessionStorage.getItem(productStorageKey);
+  const isProductPage = currentPath === "product.html";
 
-    saveStorage(STORAGE_KEYS.cart, state.cart);
-    syncCountBadges();
-    renderCart();
-    toast(`${product.name} added to cart`);
-    announce(`${product.name} added to cart`);
-  }
+  if (isProductPage && storedProductRaw) {
+    try {
+      const product = JSON.parse(storedProductRaw);
 
-  function updateCartItem(id, action) {
-    const item = state.cart.find((entry) => entry.id === id);
-    if (!item) return;
+      const titleEl = qs(".product-details h1");
+      const priceEl = qs(".big-price");
+      const summaryEl = qs(".product-summary");
+      const mainImage = qs(".main-product-image");
+      const badgeEl = qs(".badge-floating");
+      const announcementEl = qs(".announcement-bar span");
 
-    if (action === 'increase') {
-      item.quantity += 1;
-    } else if (action === 'decrease') {
-      item.quantity = Math.max(1, item.quantity - 1);
-    } else if (action === 'remove') {
-      state.cart = state.cart.filter((entry) => entry.id !== id);
-    }
-
-    saveStorage(STORAGE_KEYS.cart, state.cart);
-    syncCountBadges();
-    renderCart();
-  }
-
-  function toggleWishlist(product) {
-    const exists = state.wishlist.some((item) => item.id === product.id);
-    if (exists) {
-      state.wishlist = state.wishlist.filter((item) => item.id !== product.id);
-      toast(`${product.name} removed from wishlist`);
-      announce(`${product.name} removed from wishlist`);
-    } else {
-      state.wishlist.push(product);
-      toast(`${product.name} saved to wishlist`);
-      announce(`${product.name} saved to wishlist`);
-    }
-
-    saveStorage(STORAGE_KEYS.wishlist, state.wishlist);
-    syncCountBadges();
-    renderWishlist();
-  }
-
-  function moveWishlistItemToCart(id) {
-    const item = state.wishlist.find((entry) => entry.id === id);
-    if (!item) return;
-    addToCart(item, 1);
-    state.wishlist = state.wishlist.filter((entry) => entry.id !== id);
-    saveStorage(STORAGE_KEYS.wishlist, state.wishlist);
-    syncCountBadges();
-    renderWishlist();
-  }
-
-  function openElementPanel(panelId) {
-    const target = document.getElementById(panelId);
-    const overlay = $('[data-overlay]');
-    if (!target) return;
-
-    closeAllPanels(false);
-    target.hidden = false;
-    target.classList.add('is-open');
-    state.openPanel = panelId;
-
-    if (overlay) {
-      overlay.hidden = false;
-    }
-
-    document.body.classList.add('panel-open');
-  }
-
-  function openDrawer(drawerId) {
-    const target = document.getElementById(drawerId);
-    const overlay = $('[data-overlay]');
-    if (!target) return;
-
-    closeAllPanels(false);
-    target.hidden = false;
-    target.classList.add('is-open');
-    state.openDrawer = drawerId;
-
-    if (overlay) {
-      overlay.hidden = false;
-    }
-
-    document.body.classList.add('panel-open');
-  }
-
-  function closeAllPanels(updateOverlay = true) {
-    $$('.side-panel, .mobile-menu-drawer, .mobile-filters-panel').forEach((panel) => {
-      panel.classList.remove('is-open');
-      panel.hidden = true;
-    });
-
-    state.openPanel = null;
-    state.openDrawer = null;
-
-    if (updateOverlay) {
-      const overlay = $('[data-overlay]');
-      if (overlay) overlay.hidden = true;
-      document.body.classList.remove('panel-open');
-    }
-  }
-
-  function initPanelControls() {
-    $$('[data-open-panel]').forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        const target = trigger.dataset.openPanel;
-        if (target === 'filters-panel') {
-          openDrawer(target);
-        } else {
-          openElementPanel(target);
-        }
-      });
-    });
-
-    $$('.mobile-nav-trigger').forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        openDrawer('mobile-menu');
-      });
-    });
-
-    $$('.close-panel, .mobile-nav-close').forEach((button) => {
-      button.addEventListener('click', () => {
-        closeAllPanels();
-      });
-    });
-
-    const overlay = $('[data-overlay]');
-    if (overlay) {
-      overlay.addEventListener('click', () => {
-        closeAllPanels();
-      });
-    }
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        closeAllPanels();
+      if (titleEl && product.title) titleEl.textContent = product.title;
+      if (priceEl && product.price) priceEl.textContent = product.price;
+      if (mainImage && product.image) {
+        mainImage.src = product.image;
+        mainImage.alt = product.alt || product.title || "Product image";
       }
-    });
-  }
-
-  function initSearchSuggestions() {
-    $$('.global-search').forEach((form) => {
-      const input = $('input[type="search"]', form);
-      const suggestions = $('.search-suggestions', form);
-      if (!input || !suggestions) return;
-
-      input.addEventListener('focus', () => {
-        if (input.value.trim() || document.body.dataset.page) {
-          suggestions.hidden = false;
-        }
-      });
-
-      input.addEventListener('input', () => {
-        const hasValue = input.value.trim().length > 0;
-        suggestions.hidden = !hasValue;
-      });
-
-      input.addEventListener('blur', () => {
-        window.setTimeout(() => {
-          suggestions.hidden = true;
-        }, 120);
-      });
-
-      form.addEventListener('submit', (event) => {
-        const value = input.value.trim();
-        if (!value) {
-          event.preventDefault();
-          toast('Enter a search term');
-          announce('Enter a search term');
-        }
-      });
-    });
-
-    $$('.mobile-search').forEach((form) => {
-      const input = $('input[type="search"]', form);
-      form.addEventListener('submit', (event) => {
-        if (!input || input.value.trim()) return;
-        event.preventDefault();
-        toast('Enter a search term');
-      });
-    });
-  }
-
-  function initSwatchesAndChips() {
-    $$('[data-choice-group]').forEach((group) => {
-      group.addEventListener('click', (event) => {
-        const target = event.target.closest('.chip, .swatch');
-        if (!target || !group.contains(target)) return;
-
-        const siblings = $$('.chip, .swatch', group);
-        siblings.forEach((item) => item.classList.remove('active'));
-        target.classList.add('active');
-      });
-    });
-  }
-
-  function initHomeFilters() {
-    const buttons = $$('[data-home-filter]');
-    const cards = $$('[data-product-grid] .product-card');
-    if (!buttons.length || !cards.length) return;
-
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        buttons.forEach((item) => item.classList.remove('active'));
-        button.classList.add('active');
-
-        const filter = button.dataset.homeFilter;
-        cards.forEach((card) => {
-          const category = card.dataset.category || '';
-          const visible = filter === 'all' || category.includes(filter);
-          card.hidden = !visible;
-        });
-      });
-    });
-  }
-
-  function collectProducts() {
-    state.products = $$('[data-results-grid] .product-card');
-  }
-
-  function priceMatches(price, filter) {
-    if (filter === 'all') return true;
-    if (filter === 'under-1800') return price < 1800;
-    if (filter === '1800-2400') return price >= 1800 && price <= 2400;
-    if (filter === '2400-3000') return price > 2400 && price <= 3000;
-    if (filter === '3000-plus') return price > 3000;
-    return true;
-  }
-
-  function applyFilters() {
-    if (!state.products.length) return;
-
-    state.products.forEach((card) => {
-      const category = card.dataset.category || '';
-      const texture = card.dataset.texture || '';
-      const lace = card.dataset.lace || '';
-      const color = card.dataset.color || '';
-      const length = card.dataset.length || '';
-      const price = Number(card.dataset.price || 0);
-
-      const matches = [
-        state.filters.category === 'all' || category === state.filters.category,
-        state.filters.texture === 'all' || texture === state.filters.texture,
-        state.filters.lace === 'all' || lace === state.filters.lace,
-        state.filters.color === 'all' || color === state.filters.color,
-        state.filters.length === 'all' || length === state.filters.length,
-        priceMatches(price, state.filters.price)
-      ].every(Boolean);
-
-      card.hidden = !matches;
-    });
-
-    updateResultsCount();
-    updateActiveFilterChips();
-  }
-
-  function sortProducts() {
-    const grid = $('[data-results-grid]');
-    if (!grid || !state.products.length) return;
-
-    const items = [...state.products];
-    const sorter = state.sort;
-
-    items.sort((a, b) => {
-      const priceA = Number(a.dataset.price || 0);
-      const priceB = Number(b.dataset.price || 0);
-      const ratingA = Number(a.dataset.rating || 0);
-      const ratingB = Number(b.dataset.rating || 0);
-      const nameA = (a.dataset.name || '').toLowerCase();
-      const nameB = (b.dataset.name || '').toLowerCase();
-
-      switch (sorter) {
-        case 'price-low':
-          return priceA - priceB;
-        case 'price-high':
-          return priceB - priceA;
-        case 'rating-high':
-          return ratingB - ratingA;
-        case 'name-az':
-          return nameA.localeCompare(nameB);
-        default:
-          return 0;
+      if (badgeEl && product.badge) badgeEl.textContent = product.badge;
+      if (summaryEl && product.summary) summaryEl.textContent = product.summary;
+      if (announcementEl && product.title) {
+        announcementEl.textContent = `Now featuring ${product.title}`;
       }
+
+      document.title = `${product.title} | Glamour Glitz`;
+    } catch (error) {
+      console.warn("Could not load saved product data:", error);
+    }
+  }
+
+  // Thumbnail image swap on product page
+  const mainProductImage = qs(".main-product-image");
+  const thumbButtons = qsa(".thumb-btn");
+
+  if (mainProductImage && thumbButtons.length) {
+    thumbButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        thumbButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const thumbImg = qs("img", btn);
+        if (!thumbImg) return;
+
+        mainProductImage.src = thumbImg.src;
+        mainProductImage.alt = thumbImg.alt || mainProductImage.alt;
+      });
     });
-
-    items.forEach((item) => grid.appendChild(item));
   }
 
-  function updateResultsCount() {
-    const countNode = $('[data-results-count]');
-    if (!countNode) return;
+  // Quantity selector on product page
+  const qtyWrap = qs(".qty-selector");
+  if (qtyWrap) {
+    const qtyInput = qs("input", qtyWrap);
+    const minusBtn = qs("button:first-child", qtyWrap);
+    const plusBtn = qs("button:last-child", qtyWrap);
 
-    const visible = state.products.filter((card) => !card.hidden).length;
-    countNode.textContent = String(visible);
-  }
-
-  function labelForFilter(key, value) {
-    const map = {
-      category: {
-        'lace-front': 'Lace Front',
-        closure: 'Closure',
-        glueless: 'Glueless',
-        colored: 'Colored',
-        bob: 'Bob'
-      },
-      texture: {
-        'body-wave': 'Body Wave',
-        straight: 'Straight',
-        'deep-wave': 'Deep Wave',
-        'water-curl': 'Water Curl',
-        'loose-curl': 'Loose Curl'
-      },
-      lace: {
-        '13x4': '13x4 Frontal',
-        '13x6': '13x6 Frontal',
-        '5x5': '5x5 Closure',
-        '6x6': '6x6 Closure',
-        'glueless-cap': 'Glueless Cap'
-      },
-      color: {
-        'jet-black': 'Jet Black',
-        'natural-black': 'Natural Black',
-        brown: 'Brown',
-        ombre: 'Ombre',
-        blonde: 'Blonde',
-        burgundy: 'Burgundy'
-      },
-      length: {
-        short: '10” - 14”',
-        medium: '16” - 24”',
-        long: '26” - 32”'
-      },
-      price: {
-        'under-1800': 'Under GH₵1,800',
-        '1800-2400': 'GH₵1,800 - GH₵2,400',
-        '2400-3000': 'GH₵2,400 - GH₵3,000',
-        '3000-plus': 'GH₵3,000+'
-      }
+    const normalizeQty = () => {
+      const value = parseInt(qtyInput.value, 10);
+      if (Number.isNaN(value) || value < 1) qtyInput.value = "1";
     };
 
-    return map[key]?.[value] || value;
+    if (qtyInput) {
+      qtyInput.addEventListener("change", normalizeQty);
+      qtyInput.addEventListener("blur", normalizeQty);
+    }
+
+    if (minusBtn) {
+      minusBtn.addEventListener("click", () => {
+        const current = parseInt(qtyInput.value, 10) || 1;
+        qtyInput.value = String(Math.max(1, current - 1));
+      });
+    }
+
+    if (plusBtn) {
+      plusBtn.addEventListener("click", () => {
+        const current = parseInt(qtyInput.value, 10) || 1;
+        qtyInput.value = String(current + 1);
+      });
+    }
   }
 
-  function updateActiveFilterChips() {
-    const chips = $$('[data-clear-filter]');
-    const clearAll = $('[data-clear-all]');
-    let activeCount = 0;
+  // Prevent dead "#" links and add friendly feedback
+  qsa('a[href="#"], .wish-btn, .icon-btn, .btn').forEach((el) => {
+    el.addEventListener("click", (e) => {
+      const href = el.getAttribute && el.getAttribute("href");
+      const isDeadLink = href === "#";
 
-    chips.forEach((chip) => {
-      const key = chip.dataset.clearFilter;
-      const value = state.filters[key];
-      if (!value || value === 'all') {
-        chip.classList.add('is-hidden');
-        return;
+      if (isDeadLink) {
+        e.preventDefault();
       }
 
-      chip.classList.remove('is-hidden');
-      $('span', chip).textContent = labelForFilter(key, value);
-      activeCount += 1;
-    });
-
-    if (clearAll) {
-      clearAll.classList.toggle('is-hidden', activeCount === 0);
-    }
-  }
-
-  function setDesktopFilter(groupName, value) {
-    const input = $(`input[name="${groupName}"][value="${value}"]`);
-    if (input) input.checked = true;
-  }
-
-  function syncMobileChips(key, value) {
-    const group = $(`[data-mobile-filter-group="${key}"]`);
-    if (!group) return;
-
-    $$('.chip', group).forEach((chip) => {
-      chip.classList.toggle('active', chip.dataset.filterValue === value);
-    });
-  }
-
-  function syncColorButtons(value) {
-    const buttons = $$('[data-color-filter]');
-    buttons.forEach((button) => {
-      button.classList.toggle('active', button.dataset.colorFilter === value);
-    });
-  }
-
-  function setFilter(key, value) {
-    state.filters[key] = value;
-    if (key !== 'color') {
-      setDesktopFilter(key, value);
-      syncMobileChips(key, value);
-    } else {
-      syncColorButtons(value);
-    }
-    applyFilters();
-  }
-
-  function resetFilters() {
-    state.filters = {
-      category: 'all',
-      texture: 'all',
-      lace: 'all',
-      color: 'all',
-      length: 'all',
-      price: 'all'
-    };
-
-    ['category', 'texture', 'lace', 'length', 'price'].forEach((key) => {
-      setDesktopFilter(key, 'all');
-      syncMobileChips(key, 'all');
-    });
-
-    syncColorButtons('all');
-    applyFilters();
-  }
-
-  function initDesktopFilters() {
-    ['category', 'texture', 'lace', 'length', 'price'].forEach((key) => {
-      $$(`input[name="${key}"]`).forEach((input) => {
-        input.addEventListener('change', () => {
-          setFilter(key, input.value);
-        });
-      });
-    });
-
-    $$('[data-color-filter]').forEach((button) => {
-      button.addEventListener('click', () => {
-        const value = button.dataset.colorFilter;
-        setFilter('color', value);
-      });
-    });
-  }
-
-  function initMobileFilters() {
-    $$('[data-mobile-filter-group]').forEach((group) => {
-      group.addEventListener('click', (event) => {
-        const chip = event.target.closest('.chip');
-        if (!chip) return;
-        const key = group.dataset.mobileFilterGroup;
-        const value = chip.dataset.filterValue;
-        setFilter(key, value);
-      });
-    });
-  }
-
-  function initClearFilterButtons() {
-    $$('[data-clear-filter]').forEach((chip) => {
-      chip.addEventListener('click', () => {
-        const key = chip.dataset.clearFilter;
-        setFilter(key, 'all');
-      });
-    });
-
-    $$('[data-clear-all]').forEach((button) => {
-      button.addEventListener('click', () => {
-        resetFilters();
-      });
-    });
-  }
-
-  function initSorting() {
-    const select = $('[data-sort-select]');
-    if (!select) return;
-
-    select.addEventListener('change', () => {
-      state.sort = select.value;
-      sortProducts();
-      toast(`Sorted by ${select.options[select.selectedIndex].textContent.replace('Sort: ', '')}`);
-    });
-  }
-
-  function initWishlistButtons() {
-    $$('.wishlist-btn').forEach((button) => {
-      button.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        const product = getProductFromButton(button);
-        toggleWishlist(product);
-      });
-    });
-  }
-
-  function initCartButtons() {
-    $$('.add-to-cart-btn').forEach((button) => {
-      button.addEventListener('click', () => {
-        const product = getProductFromButton(button);
-        addToCart(product, 1);
-      });
-    });
-
-    document.addEventListener('click', (event) => {
-      const cartAction = event.target.closest('[data-cart-action]');
-      if (cartAction) {
-        const { productId, cartAction: action } = cartAction.dataset;
-        updateCartItem(productId, action);
-        return;
+      if (el.classList.contains("wish-btn")) {
+        e.preventDefault();
+        const isActive = el.classList.toggle("is-active");
+        el.textContent = isActive ? "♥" : "♡";
+        showToast(isActive ? "Added to wishlist" : "Removed from wishlist");
       }
 
-      const wishlistAction = event.target.closest('[data-wishlist-action]');
-      if (wishlistAction) {
-        const { productId, wishlistAction: action } = wishlistAction.dataset;
-        if (action === 'remove') {
-          state.wishlist = state.wishlist.filter((item) => item.id !== productId);
-          saveStorage(STORAGE_KEYS.wishlist, state.wishlist);
-          syncCountBadges();
-          renderWishlist();
-        }
+      if (el.classList.contains("add-to-cart")) {
+        e.preventDefault();
+        const qtyInput = qs(".qty-selector input");
+        const qty = qtyInput ? qtyInput.value : "1";
+        showToast(`Added ${qty} item${qty === "1" ? "" : "s"} to cart`);
+      }
 
-        if (action === 'cart') {
-          moveWishlistItemToCart(productId);
+      if (el.textContent && el.classList.contains("btn-secondary") && el.closest(".secondary-actions")) {
+        if (el.textContent.toLowerCase().includes("wishlist")) {
+          e.preventDefault();
+          showToast("Saved to wishlist");
         }
       }
-    });
-  }
 
-  function initNewsletter() {
-    $$('.newsletter-form').forEach((form) => {
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const input = $('input[type="email"]', form);
-        const value = input?.value.trim();
-        if (!value) {
-          toast('Enter your email address');
-          announce('Enter your email address');
-          return;
-        }
-        form.reset();
-        toast('You are subscribed');
-        announce('You are subscribed');
-      });
-    });
-  }
-
-  function initQueryPrefill() {
-    const params = new URLSearchParams(window.location.search);
-    const q = params.get('q');
-    if (q) {
-      $$('.global-search input[name="q"], .mobile-search input[name="q"]').forEach((input) => {
-        input.value = q;
-      });
-
-      if (state.products.length) {
-        const keyword = q.toLowerCase();
-        state.products.forEach((card) => {
-          const haystack = [
-            card.dataset.name,
-            card.dataset.category,
-            card.dataset.texture,
-            card.dataset.lace,
-            card.dataset.color,
-            card.textContent
-          ]
-            .join(' ')
-            .toLowerCase();
-
-          card.hidden = !haystack.includes(keyword);
-        });
-        updateResultsCount();
+      if (el.classList.contains("icon-btn")) {
+        const label = el.getAttribute("aria-label") || "Action";
+        if (label) showToast(label);
       }
-    }
-
-    const category = params.get('category');
-    if (category) setFilter('category', category);
-    const collection = params.get('collection');
-    if (collection === 'sale' && state.products.length) {
-      state.products.forEach((card) => {
-        const isSale = !!$('.badge.sale', card);
-        card.hidden = !isSale;
-      });
-      updateResultsCount();
-    }
-  }
-
-  function initQuickCategoryCards() {
-    $$('.quick-category-card').forEach((link) => {
-      link.addEventListener('click', () => {
-        const url = new URL(link.href, window.location.origin);
-        const category = url.searchParams.get('category');
-        if (category && window.location.pathname.includes('products.html')) {
-          setFilter('category', category);
-        }
-      });
     });
-  }
+  });
 
-  function initFaq() {
-    $$('details.faq-item').forEach((item) => {
-      item.addEventListener('toggle', () => {
-        if (!item.open) return;
-        $$('details.faq-item').forEach((other) => {
-          if (other !== item && other.closest('.small-faq') === item.closest('.small-faq')) {
-            other.open = false;
-          }
-        });
-      });
-    });
-  }
+  // Simple mobile nav close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMobileMenu();
+  });
 
-  function initProductLinkSafety() {
-    $$('.product-card a, .category-card, .quick-category-card, .nav-row a, .mobile-menu-grid a').forEach((link) => {
-      link.addEventListener('click', () => {
-        closeAllPanels();
-      });
-    });
-  }
+  // Keep card buttons from looking dead when they are plain buttons
+  qsa("button").forEach((btn) => {
+    if (!btn.type) btn.type = "button";
+  });
 
-  function initState() {
-    syncCountBadges();
-    renderCart();
-    renderWishlist();
-    syncWishlistButtons();
-    initPanelControls();
-    initSearchSuggestions();
-    initSwatchesAndChips();
-    initHomeFilters();
-    collectProducts();
-    initDesktopFilters();
-    initMobileFilters();
-    initClearFilterButtons();
-    initSorting();
-    initWishlistButtons();
-    initCartButtons();
-    initNewsletter();
-    initQuickCategoryCards();
-    initFaq();
-    initProductLinkSafety();
-
-    if (state.products.length) {
-      sortProducts();
-      applyFilters();
-      initQueryPrefill();
-    } else {
-      initQueryPrefill();
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', initState);
-})();
+  // Auto reset dynamic product data when leaving the product page is not necessary,
+  // but keeping the current selection helps if the user returns from the shop.
+});
