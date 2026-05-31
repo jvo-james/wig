@@ -11,10 +11,10 @@
   <style>
     :root {
       --bg: #ffffff;
-      --ink: #121212;
-      --muted: #67625d;
+      --ink: #111111;
+      --muted: #6e6a64;
       --soft: #f7f4ef;
-      --line: #e7e1da;
+      --line: #e8e1d9;
       --gold: #b08d57;
       --gold-deep: #8f6f40;
       --shadow: 0 18px 50px rgba(16, 16, 16, 0.08);
@@ -25,8 +25,18 @@
 
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: Inter, sans-serif; }
+    body { line-height: 1.5; }
     a { color: inherit; text-decoration: none; }
     img { display: block; width: 100%; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slowZoom {
+      from { transform: scale(1.01); }
+      to { transform: scale(1.08); }
+    }
 
     .container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
 
@@ -42,8 +52,11 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      flex-wrap: wrap;
     }
     .topbar strong { color: var(--ink); }
+    .topbar .mini-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .topbar .mini-links span { display: inline-flex; align-items: center; gap: 8px; }
 
     header {
       position: sticky;
@@ -51,7 +64,7 @@
       z-index: 30;
       backdrop-filter: blur(14px);
       background: rgba(255,255,255,0.92);
-      border-bottom: 1px solid rgba(231,225,218,0.8);
+      border-bottom: 1px solid rgba(232,225,217,0.8);
     }
     .nav {
       min-height: 84px;
@@ -76,6 +89,7 @@
       box-shadow: var(--shadow-soft);
       background: linear-gradient(180deg, #fff, #faf7f2);
     }
+    .mark i { color: var(--gold-deep); font-size: 16px; }
     .brand h1 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
@@ -91,7 +105,7 @@
       text-transform: uppercase;
       color: var(--gold-deep);
     }
-    .menu { display: flex; align-items: center; gap: 28px; color: #27211c; font-size: 14px; }
+    .menu { display: flex; align-items: center; gap: 28px; color: #29231e; font-size: 14px; flex-wrap: wrap; }
     .menu a { position: relative; padding: 6px 0; }
     .menu a::after {
       content: "";
@@ -107,7 +121,6 @@
       opacity: 0.5;
     }
     .menu a:hover::after { transform: scaleX(1); }
-
     .nav-actions { display: flex; align-items: center; gap: 12px; }
     .icon-btn {
       width: 40px;
@@ -118,30 +131,31 @@
       display: inline-grid;
       place-items: center;
       box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
+    .icon-btn i { color: #222; font-size: 15px; }
+    .icon-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,0.08); border-color: #ccb79a; }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      border: 1px solid #1b1b1b;
-      background: #1b1b1b;
+      border: 1px solid #181818;
+      background: #181818;
       color: #fff;
       padding: 13px 20px;
       border-radius: var(--radius-sm);
       font-size: 14px;
       font-weight: 600;
-      box-shadow: 0 10px 24px rgba(27,27,27,0.14);
+      letter-spacing: 0.01em;
+      box-shadow: 0 10px 24px rgba(24,24,24,0.14);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
-    .btn-outline {
-      background: transparent;
-      color: var(--ink);
-      border-color: var(--line);
-      box-shadow: none;
-    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(24,24,24,0.18); }
+    .btn-outline { background: transparent; color: var(--ink); border-color: var(--line); box-shadow: none; }
 
     .hero {
-      padding: 36px 0 28px;
+      padding: 34px 0 26px;
       border-bottom: 1px solid var(--line);
       background:
         radial-gradient(900px 380px at 80% 0%, rgba(176,141,87,0.08), transparent 62%),
@@ -149,9 +163,10 @@
     }
     .hero-wrap {
       display: grid;
-      grid-template-columns: 1fr 0.92fr;
+      grid-template-columns: 1fr 0.9fr;
       gap: 24px;
       align-items: center;
+      animation: fadeUp 0.7s ease both;
     }
     .eyebrow {
       display: inline-flex;
@@ -163,32 +178,17 @@
       color: var(--gold-deep);
       margin-bottom: 18px;
     }
-    .eyebrow::before {
-      content: "";
-      width: 38px;
-      height: 1px;
-      background: var(--gold);
-    }
+    .eyebrow::before { content: ""; width: 38px; height: 1px; background: var(--gold); }
     .hero h2 {
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(42px, 5vw, 72px);
       line-height: 0.95;
       letter-spacing: -0.03em;
       max-width: 12ch;
     }
-    .hero p {
-      margin: 0 0 20px;
-      color: var(--muted);
-      max-width: 60ch;
-      font-size: 16px;
-    }
-    .hero-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
+    .hero p { margin: 0 0 20px; color: var(--muted); max-width: 60ch; font-size: 16px; }
+    .hero-tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .search {
       flex: 1 1 280px;
       display: flex;
@@ -201,13 +201,7 @@
       box-shadow: var(--shadow-soft);
     }
     .search i { color: var(--gold-deep); }
-    .search input {
-      border: 0;
-      outline: none;
-      width: 100%;
-      font: inherit;
-      background: transparent;
-    }
+    .search input { border: 0; outline: none; width: 100%; font: inherit; background: transparent; }
     .hero-card {
       position: relative;
       min-height: 340px;
@@ -216,7 +210,7 @@
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-    .hero-card img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-card img { width: 100%; height: 100%; object-fit: cover; animation: slowZoom 20s ease-in-out infinite alternate; }
     .hero-card .overlay {
       position: absolute;
       inset: auto 0 0 0;
@@ -253,11 +247,7 @@
       align-items: center;
       gap: 8px;
     }
-    .pill.active {
-      background: #181818;
-      color: #fff;
-      border-color: #181818;
-    }
+    .pill.active { background: #181818; color: #fff; border-color: #181818; }
     .sort {
       display: inline-flex;
       align-items: center;
@@ -270,8 +260,25 @@
       background: #fff;
     }
 
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin: 42px 0 18px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+    .section-title h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1;
+    }
+    .section-title p { margin: 0; color: var(--muted); font-size: 14px; max-width: 50ch; }
+
     .layout {
-      padding: 20px 0 84px;
+      padding: 18px 0 84px;
       display: grid;
       grid-template-columns: 290px 1fr;
       gap: 20px;
@@ -289,7 +296,7 @@
     .side-block + .side-block { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
     .side-block h3 {
       margin: 0 0 12px;
-      font-size: 14px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: var(--gold-deep);
@@ -337,6 +344,7 @@
     .results-head p { margin: 0; color: var(--muted); font-size: 14px; }
     .count { color: var(--muted); font-size: 13px; }
 
+    .category-block { margin-bottom: 34px; }
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -351,8 +359,19 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-    .card .img { height: 320px; background: #f2eee9; }
+    .card .img { height: 320px; background: #f2eee9; position: relative; overflow: hidden; }
     .card .img img { width: 100%; height: 100%; object-fit: cover; }
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(232,225,217,0.95);
+      padding: 7px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
     .card .body { padding: 16px; }
     .card-top { display: flex; justify-content: space-between; gap: 14px; align-items: start; margin-bottom: 8px; }
     .card h4 { margin: 0; font-size: 16px; line-height: 1.25; }
@@ -369,18 +388,7 @@
       color: #352d27;
     }
     .stars { color: #b58a3d; letter-spacing: 1px; }
-    .badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(231,225,218,0.92);
-      padding: 7px 10px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-    .img-wrap { position: relative; }
+    .quick-link { color: #181818; font-weight: 600; }
 
     .feature-strip {
       margin-top: 28px;
@@ -402,6 +410,63 @@
     .feature i { color: var(--gold-deep); margin-top: 3px; }
     .feature strong { display: block; margin-bottom: 3px; font-size: 14px; }
     .feature span { display: block; color: var(--muted); font-size: 12px; }
+
+    .catalog-badge-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .catalog-badge {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+    .catalog-badge small {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold-deep);
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+    .catalog-badge strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .catalog-badge span { color: var(--muted); font-size: 13px; }
+
+    .cta {
+      margin-top: 30px;
+      border: 1px solid #181818;
+      background:
+        linear-gradient(135deg, rgba(16,16,16,0.96), rgba(34,31,28,0.92)),
+        url('https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: #fff;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 26px 70px rgba(0,0,0,0.18);
+    }
+    .cta-inner {
+      padding: 34px 28px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: center;
+    }
+    .cta h3 {
+      margin: 0 0 10px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 44px;
+      line-height: 0.98;
+    }
+    .cta p { margin: 0; color: rgba(255,255,255,0.84); max-width: 56ch; }
+    .cta .actions { display: flex; justify-content: end; gap: 12px; flex-wrap: wrap; }
+    .cta .btn { box-shadow: none; }
+    .cta .btn-outline { border-color: rgba(255,255,255,0.22); color: #fff; }
 
     footer {
       padding: 24px 0 34px;
@@ -427,33 +492,37 @@
       place-items: center;
       background: #fff;
     }
+    .social a i { color: #222; }
 
     @media (max-width: 1100px) {
       .hero-wrap, .layout { grid-template-columns: 1fr; }
       .sidebar { position: static; }
-      .grid, .feature-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid, .feature-strip, .catalog-badge-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 760px) {
       .container { width: min(1180px, calc(100% - 28px)); }
       .topbar .container, .nav { flex-direction: column; align-items: start; padding: 12px 0; }
-      .menu { gap: 18px; flex-wrap: wrap; }
+      .menu { gap: 18px; }
       .nav-actions { width: 100%; justify-content: space-between; }
-      .grid, .feature-strip { grid-template-columns: 1fr; }
-      .filters, .results-head { flex-direction: column; align-items: start; }
+      .grid, .feature-strip, .catalog-badge-row { grid-template-columns: 1fr; }
+      .filters, .results-head, .section-title { flex-direction: column; align-items: start; }
+      .cta .actions { justify-content: start; }
     }
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="container">
-      <div><strong>Luxury hair, ready to ship</strong> — explore premium wigs curated for effortless beauty.</div>
-      <div><i class="fa-brands fa-whatsapp"></i> Order enquiries on WhatsApp</div>
+      <div><strong>Luxury hair, ready to ship</strong> — explore a fuller, more curated wig collection.</div>
+      <div class="mini-links">
+        <span><i class="fa-brands fa-whatsapp"></i> Order enquiries on WhatsApp</span>
+      </div>
     </div>
   </div>
 
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand">
+      <a href="index.html" class="brand" aria-label="Luxe Wigs Home">
         <div class="mark"><i class="fa-solid fa-crown"></i></div>
         <div>
           <h1>LUXE WIGS</h1>
@@ -480,13 +549,13 @@
     <div class="container hero-wrap">
       <div>
         <div class="eyebrow">The collection</div>
-        <h2>Choose the wig that matches your mood, your look, and your moment.</h2>
+        <h2>Choose the wig that matches her mood, her look, and her moment.</h2>
         <p>
-          Browse our premium selections with a boutique feel. Each piece is presented like a luxury purchase — polished, attractive, and easy to fall in love with.
+          Browse a larger premium catalog with a boutique feel. Each category is arranged to make the shopping experience elegant, clear, and visually irresistible.
         </p>
         <div class="hero-tools">
           <div class="search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search by length, texture, or style..." /></div>
-          <a class="btn" href="#grid"><i class="fa-solid fa-arrow-down"></i> Explore products</a>
+          <a class="btn" href="#catalog"><i class="fa-solid fa-arrow-down"></i> Explore catalog</a>
         </div>
       </div>
 
@@ -508,18 +577,20 @@
         <span class="pill">Body wave</span>
         <span class="pill">Curly</span>
         <span class="pill">Lace front</span>
+        <span class="pill">HD lace</span>
+        <span class="pill">Closure wigs</span>
       </div>
       <div class="sort"><i class="fa-solid fa-arrow-up-short-wide"></i> Sort by: Featured</div>
     </section>
 
-    <section class="layout" id="grid">
+    <section class="layout" id="catalog">
       <aside class="sidebar">
         <div class="side-block">
           <h3>Length</h3>
           <div class="checklist">
-            <label><span>14–18 inches</span><input type="checkbox"></label>
-            <label><span>20–24 inches</span><input type="checkbox"></label>
-            <label><span>26–30 inches</span><input type="checkbox"></label>
+            <label><span>12–16 inches</span><input type="checkbox"></label>
+            <label><span>18–22 inches</span><input type="checkbox"></label>
+            <label><span>24–30 inches</span><input type="checkbox"></label>
           </div>
         </div>
         <div class="side-block">
@@ -531,19 +602,19 @@
           </div>
         </div>
         <div class="side-block">
-          <h3>Brand promise</h3>
+          <h3>Occasion</h3>
           <div class="checklist">
-            <label><span>Natural finish</span><i class="fa-solid fa-check"></i></label>
-            <label><span>Soft density</span><i class="fa-solid fa-check"></i></label>
-            <label><span>Fast shipping</span><i class="fa-solid fa-check"></i></label>
+            <label><span>Everyday wear</span><input type="checkbox"></label>
+            <label><span>Events & glam</span><input type="checkbox"></label>
+            <label><span>Protective styling</span><input type="checkbox"></label>
           </div>
         </div>
 
         <div class="mini-banner">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="Elegant beauty portrait" />
+          <img src=a4.webp" alt="Elegant beauty portrait" />
           <div class="text">
             <strong>Need help choosing?</strong>
-            <p>Guide her to the right texture, length, and finish with warm, boutique-style customer service.</p>
+            <p>Guide her to the right texture, length, and finish with warm, boutique-style service.</p>
             <a class="btn btn-outline" href="#"><i class="fa-brands fa-whatsapp"></i> Chat now</a>
           </div>
         </div>
@@ -553,95 +624,103 @@
         <div class="results-head">
           <div>
             <h3>Featured wigs</h3>
-            <p>Elegant pieces designed to make the shop feel refined and irresistible.</p>
+            <p>More products, more categories, and a stronger luxury shopping experience.</p>
           </div>
-          <div class="count">12 products shown</div>
+          <div class="count">18 products shown</div>
         </div>
 
-        <div class="grid">
-          <article class="card">
-            <div class="img-wrap">
-              <span class="badge">Best seller</span>
-              <div class="img"><img src="https://images.unsplash.com/photo-1497636320844-4e7a2e7b2a4d?auto=format&fit=crop&w=1200&q=80" alt="Long straight wig" /></div>
+        <div class="category-block">
+          <div class="section-title">
+            <div>
+              <h3>Straight wigs</h3>
+              <p>Clean, sleek, and premium styles with a polished finish.</p>
             </div>
-            <div class="body">
-              <div class="card-top">
-                <h4>Royal Sleek 30"</h4><div class="price">$320</div>
-              </div>
-              <p>Ultra-smooth strands with a glossy finish and graceful movement.</p>
-              <div class="meta-row"><span class="stars">★★★★★</span><span>Order now</span></div>
-            </div>
-          </article>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <div class="img"><span class="badge">Best seller</span><img src="https://images.unsplash.com/photo-1497636320844-4e7a2e7b2a4d?auto=format&fit=crop&w=1200&q=80" alt="Royal Sleek 30 inch wig" /></div>
+              <div class="body"><div class="card-top"><h4>Royal Sleek 30"</h4><div class="price">$320</div></div><p>Ultra-smooth strands with a glossy finish and soft movement.</p><div class="meta-row"><span class="stars">★★★★★</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+            <article class="card">
+              <div class="img"><span class="badge">Luxury</span><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80" alt="Midnight Straight wig" /></div>
+              <div class="body"><div class="card-top"><h4>Midnight Straight 24"</h4><div class="price">$295</div></div><p>Refined and sleek with a soft finish for everyday elegance.</p><div class="meta-row"><span class="stars">★★★★★</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+            <article class="card">
+              <div class="img"><span class="badge">HD lace</span><img src="https://images.unsplash.com/photo-1522338140262-f46f5913618a?auto=format&fit=crop&w=1200&q=80" alt="Soft Grace Lace wig" /></div>
+              <div class="body"><div class="card-top"><h4>Soft Grace Lace 22"</h4><div class="price">$275</div></div><p>Natural-looking hairline with a light, flattering finish.</p><div class="meta-row"><span class="stars">★★★★☆</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+            <article class="card">
+              <div class="img"><span class="badge">Closure</span><img src="https://images.unsplash.com/photo-1524503033411-f0f8c33c44bb?auto=format&fit=crop&w=1200&q=80" alt="Signature Silk wig" /></div>
+              <div class="body"><div class="card-top"><h4>Signature Silk 28"</h4><div class="price">$340</div></div><p>Glossy strands, refined density, and a sleek profile that feels effortless.</p><div class="meta-row"><span class="stars">★★★★★</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+          </div>
+        </div>
 
-          <article class="card">
-            <div class="img-wrap">
-              <span class="badge">New arrival</span>
-              <div class="img"><img src="https://images.unsplash.com/photo-1524503033411-f0f8c33c44bb?auto=format&fit=crop&w=1200&q=80" alt="Silky long hair" /></div>
+        <div class="category-block">
+          <div class="section-title">
+            <div>
+              <h3>Body wave wigs</h3>
+              <p>Soft movement and a graceful look for clients who love romantic polish.</p>
             </div>
-            <div class="body">
-              <div class="card-top">
-                <h4>Signature Silk 28"</h4><div class="price">$340</div>
-              </div>
-              <p>Luxury density, clean parting, and a rich premium silhouette.</p>
-              <div class="meta-row"><span class="stars">★★★★★</span><span>In stock</span></div>
-            </div>
-          </article>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <div class="img"><span class="badge">Popular</span><img src="a1.jpg" alt="Velvet Wave wig" /></div>
+              <div class="body"><div class="card-top"><h4>Velvet Wave 26"</h4><div class="price">$285</div></div><p>Soft body waves made for an elegant everyday look with a luxe feel.</p><div class="meta-row"><span class="stars">★★★★★</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+            <article class="card">
+              <div class="img"><span class="badge">New</span><img src="future.webp" alt="Silk Motion wig" /></div>
+              <div class="body"><div class="card-top"><h4>Silk Motion 24"</h4><div class="price">$298</div></div><p>Balanced waves with a smooth finish and rich movement.</p><div class="meta-row"><span class="stars">★★★★★</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+            <article class="card">
+              <div class="img"><span class="badge">Soft glam</span><img src="final.jpg" alt="Glow Wave wig" /></div>
+              <div class="body"><div class="card-top"><h4>Glow Wave 22"</h4><div class="price">$268</div></div><p>Graceful waves that photograph beautifully and feel easy to wear.</p><div class="meta-row"><span class="stars">★★★★☆</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+            <article class="card">
+              <div class="img"><span class="badge">Daily</span><img src="hero.webp" alt="Aura Wave wig" /></div>
+              <div class="body"><div class="card-top"><h4>Aura Wave 20"</h4><div class="price">$250</div></div><p>Light, polished, and ideal for a refined everyday finish.</p><div class="meta-row"><span class="stars">★★★★★</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+          </div>
+        </div>
 
-          <article class="card">
-            <div class="img-wrap">
-              <span class="badge">Popular</span>
-              <div class="img"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80" alt="Straight polished wig" /></div>
+        <div class="category-block">
+          <div class="section-title">
+            <div>
+              <h3>Curly wigs</h3>
+              <p>Full, rich, and glamorous styles with beautiful texture and bounce.</p>
             </div>
-            <div class="body">
-              <div class="card-top">
-                <h4>Midnight Straight 24"</h4><div class="price">$295</div>
-              </div>
-              <p>Refined and sleek with a soft finish made for everyday elegance.</p>
-              <div class="meta-row"><span class="stars">★★★★★</span><span>Ready to ship</span></div>
-            </div>
-          </article>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <div class="img"><span class="badge">Volume</span><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80" alt="Opulence Curl wig" /></div>
+              <div class="body"><div class="card-top"><h4>Opulence Curl 24"</h4><div class="price">$310</div></div><p>Defined curls with fullness, bounce, and a rich silhouette.</p><div class="meta-row"><span class="stars">★★★★★</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+            <article class="card">
+              <div class="img"><span class="badge">Glam</span><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80" alt="Royal Curl wig" /></div>
+              <div class="body"><div class="card-top"><h4>Royal Curl 28"</h4><div class="price">$335</div></div><p>Elegant curls with premium density and a lifted glam look.</p><div class="meta-row"><span class="stars">★★★★★</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+            <article class="card">
+              <div class="img"><span class="badge">Soft curl</span><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" alt="Crown Curl wig" /></div>
+              <div class="body"><div class="card-top"><h4>Crown Curl 20"</h4><div class="price">$276</div></div><p>Classic curls for a neat, beautiful and confident finish.</p><div class="meta-row"><span class="stars">★★★★☆</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+            <article class="card">
+              <div class="img"><span class="badge">Full</span><img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1200&q=80" alt="Luxe Coil wig" /></div>
+              <div class="body"><div class="card-top"><h4>Luxe Coil 26"</h4><div class="price">$325</div></div><p>Strong texture, rich body, and a striking premium look.</p><div class="meta-row"><span class="stars">★★★★★</span><a class="quick-link" href="product.html">View</a></div></div>
+            </article>
+          </div>
+        </div>
 
-          <article class="card">
-            <div class="img-wrap">
-              <span class="badge">Lace front</span>
-              <div class="img"><img src="https://images.unsplash.com/photo-1522338140262-f46f5913618a?auto=format&fit=crop&w=1200&q=80" alt="Natural luxury hair" /></div>
-            </div>
-            <div class="body">
-              <div class="card-top">
-                <h4>Soft Grace Lace 22"</h4><div class="price">$275</div>
-              </div>
-              <p>Natural-looking hairline with a light, flattering finish.</p>
-              <div class="meta-row"><span class="stars">★★★★☆</span><span>Elegant pick</span></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="img-wrap">
-              <span class="badge">Volume</span>
-              <div class="img"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80" alt="Curly luxury wig" /></div>
-            </div>
-            <div class="body">
-              <div class="card-top">
-                <h4>Opulence Curl 24"</h4><div class="price">$310</div>
-              </div>
-              <p>Defined curls with bounce, fullness, and a luxe finish.</p>
-              <div class="meta-row"><span class="stars">★★★★★</span><span>Volume queen</span></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="img-wrap">
-              <span class="badge">Soft wave</span>
-              <div class="img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Body wave style" /></div>
-            </div>
-            <div class="body">
-              <div class="card-top">
-                <h4>Velvet Wave 26"</h4><div class="price">$285</div>
-              </div>
-              <p>Fluid movement and a graceful texture for day-to-night wear.</p>
-              <div class="meta-row"><span class="stars">★★★★★</span><span>Customer favorite</span></div>
-            </div>
-          </article>
+        <div class="section-title" style="margin-top:44px;">
+          <div>
+            <h3>Special categories</h3>
+            <p>Extra buying paths that make the shop feel complete and thoughtfully organized.</p>
+          </div>
+        </div>
+        <div class="catalog-badge-row">
+          <div class="catalog-badge"><small>Lace front</small><strong>Natural hairline pieces</strong><span>For customers who love a seamless, realistic finish.</span></div>
+          <div class="catalog-badge"><small>HD lace</small><strong>Invisible melt styles</strong><span>For a refined front that disappears beautifully.</span></div>
+          <div class="catalog-badge"><small>Closure wigs</small><strong>Easy wear favorites</strong><span>Simple, polished, and perfect for everyday styling.</span></div>
+          <div class="catalog-badge"><small>Pre-plucked</small><strong>Ready-to-wear looks</strong><span>For customers who want convenience with luxury.</span></div>
         </div>
 
         <div class="feature-strip">
@@ -651,6 +730,21 @@
           <div class="feature"><i class="fa-solid fa-shield-heart"></i><div><strong>Trusted quality</strong><span>Designed to build confidence before the purchase is made.</span></div></div>
         </div>
       </section>
+    </section>
+
+    <section class="cta">
+      <div class="cta-inner">
+        <div>
+          <h3>Turn the catalog into a luxury shopping experience.</h3>
+          <p>
+            This version adds more products, more categories, and a better sense of structure while staying elegant and premium.
+          </p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-outline" href="product.html"><i class="fa-regular fa-eye"></i> View Product</a>
+          <a class="btn" href="index.html"><i class="fa-solid fa-house"></i> Back Home</a>
+        </div>
+      </div>
     </section>
   </main>
 
