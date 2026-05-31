@@ -3,289 +3,832 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glamour Glitz | Luxury Wigs & Hair Extensions</title>
+  <title>LUXE WIGS — Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-AvS5K5c5Q3zYH1b0Z0Q4x5w8a0R7tK3K8W2Zc4T0h5VfG5Xw2f7xVwQ0X4o2nQX1m4j8r8g0l0Qn2xO6iY0Y2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #121212;
+      --muted: #66625d;
+      --soft: #f6f3ef;
+      --line: #e7e1da;
+      --gold: #b08d57;
+      --gold-deep: #8f6f40;
+      --shadow: 0 18px 50px rgba(16, 16, 16, 0.08);
+      --shadow-soft: 0 10px 30px rgba(16, 16, 16, 0.06);
+      --radius: 8px;
+      --radius-sm: 6px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: Inter, sans-serif; }
+    body { line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+
+    .container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      background: linear-gradient(180deg, #fff, #fffdfb);
+    }
+    .topbar .container {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar strong { color: var(--ink); font-weight: 600; }
+    .topbar .mini-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .topbar .mini-links span { display: inline-flex; align-items: center; gap: 8px; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.9);
+      border-bottom: 1px solid rgba(231,225,218,0.8);
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 190px;
+    }
+    .mark {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-soft);
+      background: linear-gradient(180deg, #fff, #faf7f2);
+    }
+    .brand h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    .menu { display: flex; align-items: center; gap: 28px; color: #27211c; font-size: 14px; }
+    .menu a { position: relative; padding: 6px 0; }
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+      opacity: 0.5;
+    }
+    .menu a:hover::after { transform: scaleX(1); }
+
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      display: inline-grid;
+      place-items: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid #1b1b1b;
+      background: #1b1b1b;
+      color: #fff;
+      padding: 13px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 10px 24px rgba(27,27,27,0.14);
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(27,27,27,0.18); }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+      box-shadow: none;
+    }
+
+    .hero {
+      padding: 42px 0 26px;
+      background:
+        radial-gradient(1000px 500px at 80% 10%, rgba(176,141,87,0.08), transparent 58%),
+        linear-gradient(180deg, #fff, #fffdfa 85%, #ffffff);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 42px 0 18px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--gold-deep);
+      margin-bottom: 18px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(50px, 7vw, 86px);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin: 0 0 18px;
+      max-width: 10ch;
+    }
+    .hero p {
+      max-width: 58ch;
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 620px;
+    }
+    .stat {
+      padding: 18px 16px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff, #faf8f5);
+      border-radius: var(--radius);
+    }
+    .stat strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    .hero-visual {
+      position: relative;
+      min-height: 640px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #efe9e3;
+    }
+    .hero-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.94) contrast(1.03);
+    }
+    .hero-card {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(231,225,218,0.92);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      display: grid;
+      gap: 8px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+    }
+    .hero-card strong {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      line-height: 1;
+    }
+    .hero-card p { margin: 0; font-size: 14px; color: var(--muted); max-width: 44ch; }
+
+    .section {
+      padding: 24px 0 84px;
+    }
+
+    .strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: -34px;
+      position: relative;
+      z-index: 2;
+    }
+    .chip-card {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.04);
+    }
+    .chip-card i { color: var(--gold-deep); font-size: 18px; width: 22px; text-align: center; }
+    .chip-card strong { display: block; font-size: 14px; margin-bottom: 2px; }
+    .chip-card span { color: var(--muted); font-size: 12px; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 58px 0 22px;
+    }
+    .section-head h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 40px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .section-head p { margin: 0; color: var(--muted); max-width: 52ch; }
+
+    .collections {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 18px;
+    }
+    .collection {
+      position: relative;
+      min-height: 390px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: #f5f2ee;
+    }
+    .collection img {
+      width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.01);
+    }
+    .collection .overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 22px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.58) 70%);
+      color: #fff;
+    }
+    .collection .overlay small {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 8px;
+    }
+    .collection .overlay h4 {
+      margin: 0 0 8px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      line-height: 0.98;
+      max-width: 10ch;
+    }
+    .collection .overlay p {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+      max-width: 30ch;
+    }
+    .collection .overlay a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .product-card {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .product-card .thumb {
+      height: 300px;
+      background: #f2eee9;
+      overflow: hidden;
+    }
+    .product-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .product-card .body { padding: 16px 16px 18px; }
+    .product-card .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .product-card h5 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.2;
+      max-width: 16ch;
+    }
+    .price { font-weight: 700; color: var(--gold-deep); white-space: nowrap; }
+    .product-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .product-card .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: #332d27;
+      font-size: 13px;
+    }
+    .stars { color: #b58a3d; letter-spacing: 1px; font-size: 12px; }
+
+    .about-banner {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .about-copy {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff, #fbf8f4);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+    }
+    .about-copy h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      line-height: 1;
+      margin: 0 0 14px;
+    }
+    .about-copy p { color: var(--muted); margin: 0 0 16px; }
+    .benefits {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .benefit {
+      display: flex;
+      align-items: start;
+      gap: 12px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+    .benefit:first-child { border-top: 0; padding-top: 0; }
+    .benefit i { color: var(--gold-deep); margin-top: 2px; }
+    .benefit strong { display: block; margin-bottom: 4px; font-size: 14px; }
+    .benefit span { color: var(--muted); font-size: 13px; }
+
+    .about-visual {
+      position: relative;
+      min-height: 520px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+    .testimonial {
+      margin-top: 62px;
+      border-top: 1px solid var(--line);
+      padding-top: 32px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 18px;
+      align-items: center;
+    }
+    .testimonial .quote {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      line-height: 1.02;
+      margin: 0;
+      max-width: 13ch;
+    }
+    .quote-panel {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+    .quote-panel p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .quote-panel .person {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      flex: 0 0 auto;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .person strong { display: block; font-size: 14px; }
+    .person span { color: var(--muted); font-size: 12px; }
+
+    .cta {
+      margin-top: 70px;
+      border: 1px solid #1b1b1b;
+      background:
+        linear-gradient(135deg, rgba(17,17,17,0.96), rgba(35,32,28,0.92)),
+        url('https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: #fff;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 26px 70px rgba(0,0,0,0.18);
+    }
+    .cta-inner {
+      padding: 40px 32px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .cta h3 {
+      margin: 0 0 10px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 46px;
+      line-height: 0.98;
+    }
+    .cta p { margin: 0; color: rgba(255,255,255,0.84); max-width: 56ch; }
+    .cta .actions { display: flex; justify-content: end; gap: 12px; flex-wrap: wrap; }
+    .cta .btn { box-shadow: none; }
+    .cta .btn-outline { border-color: rgba(255,255,255,0.22); color: #fff; }
+
+    footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-wrap {
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .social { display: flex; gap: 14px; }
+    .social a {
+      width: 36px; height: 36px; border: 1px solid var(--line);
+      border-radius: 8px; display: grid; place-items: center; background: #fff;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid, .about-banner, .testimonial, .cta-inner { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 540px; }
+      .strip, .products, .collections { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(1180px, calc(100% - 28px)); }
+      .topbar .container, .nav { flex-direction: column; align-items: start; padding: 12px 0; }
+      .menu { gap: 18px; flex-wrap: wrap; }
+      .nav-actions { width: 100%; justify-content: space-between; }
+      .hero { padding-top: 24px; }
+      .hero-copy { padding-top: 14px; }
+      .hero-stats, .strip, .products, .collections { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: start; }
+      .cta .actions { justify-content: start; }
+      .cta-inner { padding: 28px 22px; }
+      .about-copy, .quote-panel { padding: 22px; }
+      .hero h2 { max-width: 12ch; }
+    }
+  </style>
 </head>
 <body>
-
-  <div class="announcement-bar">
-    <span>International shipping now available</span>
+  <div class="topbar">
+    <div class="container">
+      <div><strong>Free shipping</strong> on premium orders over $250 — beautifully packaged, delivered with care.</div>
+      <div class="mini-links">
+        <span><i class="fa-solid fa-phone"></i> +1 (000) 123-4567</span>
+        <span><i class="fa-brands fa-whatsapp"></i> WhatsApp us</span>
+      </div>
+    </div>
   </div>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <button class="icon-btn mobile-menu-btn" aria-label="Open menu">
-        ☰
-      </button>
-
-      <a href="index.html" class="brand">
-        <span class="brand-top">GLAMOUR GLITZ</span>
-        <span class="brand-bottom">luxury hair</span>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <div class="mark"><i class="fa-solid fa-crown"></i></div>
+        <div>
+          <h1>LUXE WIGS</h1>
+          <small>Luxury hair, elevated</small>
+        </div>
       </a>
 
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="index.html" class="active">Home</a>
-        <a href="products.html">Shop by ▾</a>
-        <a href="products.html#collections">Collections</a>
-        <a href="product.html">Our Story</a>
-        <a href="#contact">Get in touch</a>
-        <a href="#faq">FAQs</a>
+      <nav class="menu" aria-label="Primary">
+        <a href="#collections">Collections</a>
+        <a href="#products">Best Sellers</a>
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact</a>
       </nav>
 
-      <div class="header-actions">
-        <button class="icon-btn" aria-label="Search">⌕</button>
-        <button class="icon-btn" aria-label="Account">◌</button>
-        <button class="icon-btn" aria-label="Wishlist">♡</button>
-        <button class="icon-btn" aria-label="Cart">👜</button>
+      <div class="nav-actions">
+        <a class="icon-btn" href="#"><i class="fa-regular fa-heart"></i></a>
+        <a class="icon-btn" href="#"><i class="fa-solid fa-bag-shopping"></i></a>
+        <a class="btn btn-outline" href="#products">Explore Wigs</a>
       </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Bestsellers</p>
-        <h1>Hair that looks soft, seamless, and expensive.</h1>
-        <p class="hero-text">
-          Premium wigs, frontals, closures, and extensions designed for a flawless install and a luxury finish.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="products.html" class="btn btn-primary">Shop Now</a>
-          <a href="#bestsellers" class="btn btn-secondary">Explore Favorites</a>
-        </div>
-
-        <div class="hero-pills">
-          <span>HD Lace</span>
-          <span>Raw Quality</span>
-          <span>Pre-Plucked</span>
-          <span>Ready to Wear</span>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-card hero-card-left">
-          <img src="hero.webp" alt="Luxury wavy wig style" />
-        </div>
-        <div class="hero-card hero-card-right">
-          <img src="w1.jpg" alt="Glossy black wig style" />
-        </div>
-
-        <div class="floating-tag tag-one">Best Seller</div>
-        <div class="floating-tag tag-two">Shop Now, Pay Later</div>
-      </div>
-    </section>
-
-    <div class="marquee">
-      <div class="marquee-track">
-        <span>SHOP NOW, PAY LATER</span>
-        <span>SHOP NOW, PAY LATER</span>
-        <span>SHOP NOW, PAY LATER</span>
-        <span>SHOP NOW, PAY LATER</span>
-        <span>SHOP NOW, PAY LATER</span>
-        <span>SHOP NOW, PAY LATER</span>
-      </div>
-    </div>
-
-    <section class="luxury-intro">
-      <p class="eyebrow">Lush Locks</p>
-      <h2>Treat yourself to true luxury</h2>
-      <p>
-        Our curated selection brings together elegant textures, rich body, and a natural finish.
-        From sleek straight styles to bounce and body wave glam, every piece is made to elevate your look.
-      </p>
-      <a href="products.html" class="btn btn-outline">Learn More</a>
-    </section>
-
-    <section class="section-block" id="bestsellers">
-      <div class="section-heading">
-        <p class="eyebrow">Bestsellers</p>
-        <h2>Fan favorites everyone keeps coming back for</h2>
-      </div>
-
-      <div class="product-grid">
-        <article class="product-card">
-          <div class="product-image-wrap">
-            <img src="a1.jpg" alt="Natural black wig in loose curls" />
-            <button class="wish-btn" aria-label="Add to wishlist">♡</button>
-          </div>
-          <h3>Natural Black Wig Clip-In Extensions</h3>
-          <p class="price">$100.00 USD</p>
-          <a href="product.html" class="btn btn-card">Choose options</a>
-        </article>
-
-        <article class="product-card">
-          <div class="product-image-wrap">
-            <img src="a2.jpg" alt="Virgin hair wig extensions" />
-            <button class="wish-btn" aria-label="Add to wishlist">♡</button>
-          </div>
-          <h3>Virgin Hair Wig Extensions</h3>
-          <p class="price">$120.00 USD</p>
-          <a href="product.html" class="btn btn-card">Choose options</a>
-        </article>
-
-        <article class="product-card">
-          <div class="product-image-wrap">
-            <img src="future.webp" alt="Copper curly human hair wig" />
-            <button class="wish-btn" aria-label="Add to wishlist">♡</button>
-          </div>
-          <h3>Copper Wavy Curly Wig</h3>
-          <p class="price">$120.00 USD</p>
-          <a href="product.html" class="btn btn-card">Choose options</a>
-        </article>
-
-        <article class="product-card">
-          <div class="product-image-wrap">
-            <img src="w3.webp" alt="Natural black wavy frontal wig" />
-            <button class="wish-btn" aria-label="Add to wishlist">♡</button>
-          </div>
-          <h3>Natural Black Wavy Frontals</h3>
-          <p class="price">$150.00 USD</p>
-          <a href="product.html" class="btn btn-card">Choose options</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-block" id="collections">
-      <div class="section-heading center">
-        <p class="eyebrow">Shop by collection</p>
-        <h2>Find the look that matches your vibe</h2>
-      </div>
-
-      <div class="collection-grid">
-        <a href="products.html" class="collection-card">
-          <img src="w1.jpg" alt="Wigs collection" />
-          <div class="collection-overlay">
-            <span>Wigs</span>
-            <small>Shop collection →</small>
-          </div>
-        </a>
-
-        <a href="products.html" class="collection-card">
-          <img src="a5.jpg" alt="Frontals collection" />
-          <div class="collection-overlay">
-            <span>Frontals</span>
-            <small>Shop collection →</small>
-          </div>
-        </a>
-
-        <a href="products.html" class="collection-card">
-          <img src="final.jpg" alt="Extensions collection" />
-          <div class="collection-overlay">
-            <span>Extensions</span>
-            <small>Shop collection →</small>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="feature-banner">
-      <div class="feature-banner-inner">
-        <img src="smooth.webp" alt="Elegant flowing black hair" class="banner-img banner-left" />
-        <img src="before.png" alt="Hair transformation before" class="banner-img banner-center" />
-        <img src="after.png" alt="Hair transformation after" class="banner-img banner-right" />
-
-        <div class="banner-copy">
-          <p class="eyebrow">Hair dreams, upgraded</p>
-          <h2>Make your hair dreams a sweet reality</h2>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Private luxury hair boutique</div>
+          <h2>Wigs that look expensive, because they are.</h2>
           <p>
-            Sleek installs, soft movement, and rich texture that photographs beautifully from every angle.
+            Discover a refined collection of premium wigs designed to give you confidence,
+            softness, and a flawless finish from every angle. From silky straight to rich curls,
+            every piece is chosen to feel effortless and look unforgettable.
           </p>
-          <a href="products.html" class="btn btn-primary">Shop Now</a>
+          <div class="hero-actions">
+            <a class="btn" href="#products"><i class="fa-solid fa-arrow-right"></i> Shop Best Sellers</a>
+            <a class="btn btn-outline" href="#story"><i class="fa-regular fa-circle-play"></i> View the Brand Story</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>250+</strong>
+              <span>premium units curated for modern beauty</span>
+            </div>
+            <div class="stat">
+              <strong>24h</strong>
+              <span>fast replies on WhatsApp and social media</span>
+            </div>
+            <div class="stat">
+              <strong>5★</strong>
+              <span>glowing reviews from repeat customers</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&w=1400&q=80" alt="Elegant woman with long luxury wig" />
+          <div class="hero-card">
+            <strong>New Season, New Hair</strong>
+            <p>High-shine textures, natural hairlines, and signature styles made for the woman who likes to be noticed softly.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="two-column-story">
-      <div class="story-media">
-        <img src="hero.webp" alt="Luxury hairstyle close up" />
+    <section class="section">
+      <div class="container strip">
+        <div class="chip-card"><i class="fa-solid fa-scissors"></i><div><strong>Expert styling</strong><span>Designed to flatter every face shape</span></div></div>
+        <div class="chip-card"><i class="fa-solid fa-gem"></i><div><strong>Premium finish</strong><span>Soft texture, luxurious movement</span></div></div>
+        <div class="chip-card"><i class="fa-solid fa-truck-fast"></i><div><strong>Fast delivery</strong><span>Quick dispatch, elegant packaging</span></div></div>
+        <div class="chip-card"><i class="fa-solid fa-comments"></i><div><strong>Personal service</strong><span>Friendly guidance before and after purchase</span></div></div>
       </div>
 
-      <div class="story-content">
-        <p class="eyebrow">Why customers love us</p>
-        <h2>Designed for the woman who wants elegance without effort</h2>
-
-        <div class="story-points">
+      <div class="container" id="collections">
+        <div class="section-head">
           <div>
-            <h3>Soft texture</h3>
-            <p>Natural movement that stays full, silky, and beautiful with minimal styling.</p>
-          </div>
-          <div>
-            <h3>Seamless finish</h3>
-            <p>Laces, closures, and frontals made to melt into the hairline for a polished look.</p>
-          </div>
-          <div>
-            <h3>Wear it your way</h3>
-            <p>From everyday glam to special occasions, these looks are made to be versatile.</p>
+            <h3>Curated collections</h3>
+            <p>Each collection has a distinct mood — polished, feminine, and confidently premium.</p>
           </div>
         </div>
 
-        <a href="products.html" class="btn btn-outline">Browse all styles</a>
-      </div>
-    </section>
+        <div class="collections">
+          <article class="collection">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1400&q=80" alt="Woman with straight luxury wig" />
+            <div class="overlay">
+              <small>Signature Straight</small>
+              <h4>Sleek, silky, and timeless.</h4>
+              <p>The kind of wig that makes a simple outfit look instantly expensive.</p>
+              <a href="#products">Shop the look <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
 
-    <section class="testimonial-strip">
-      <div class="testimonial-card">
-        <p>“The hair is full, soft, and gave me the exact salon finish I wanted.”</p>
-        <span>Customer Review</span>
-      </div>
-      <div class="testimonial-card">
-        <p>“The lace melted perfectly and the volume was stunning right out of the box.”</p>
-        <span>Customer Review</span>
-      </div>
-      <div class="testimonial-card">
-        <p>“Luxury quality, fast shipping, and the pictures looked just like the product.”</p>
-        <span>Customer Review</span>
-      </div>
-    </section>
+          <article class="collection">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Woman with curly hair look" />
+            <div class="overlay">
+              <small>Soft Curls</small>
+              <h4>Volume with grace.</h4>
+              <p>Perfect for clients who love a glamorous silhouette with a natural, effortless feel.</p>
+              <a href="#products">See styles <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
 
-    <section class="faq-section" id="faq">
-      <div class="section-heading center">
-        <p class="eyebrow">FAQs</p>
-        <h2>Quick answers before you check out</h2>
+          <article class="collection">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80" alt="Luxury beauty portrait" />
+            <div class="overlay">
+              <small>Everyday Luxe</small>
+              <h4>Confident from morning to night.</h4>
+              <p>Polished pieces that let you move through your day looking refined and ready.</p>
+              <a href="#products">Browse all <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
       </div>
 
-      <div class="faq-list">
-        <details>
-          <summary>Are the wigs beginner friendly?</summary>
-          <p>Yes. The collection is styled to be wearable and easy to install, with options that work for beginners and pros.</p>
-        </details>
+      <div class="container" id="products">
+        <div class="section-head">
+          <div>
+            <h3>Best sellers</h3>
+            <p>Selected for their natural finish, premium density, and the kind of presence people notice immediately.</p>
+          </div>
+        </div>
 
-        <details>
-          <summary>Do you offer different lengths and textures?</summary>
-          <p>Yes. The product pages can be expanded to show lengths, textures, and cap sizes for each style.</p>
-        </details>
+        <div class="products">
+          <article class="product-card">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1497636320844-4e7a2e7b2a4d?auto=format&fit=crop&w=1200&q=80" alt="Long straight wig" /></div>
+            <div class="body">
+              <div class="meta">
+                <h5>Royal Sleek 30"</h5>
+                <div class="price">$320</div>
+              </div>
+              <p>Ultra-smooth straight texture with a polished finish and soft movement.</p>
+              <div class="bottom"><span class="stars">★★★★★</span><span>Ready to wear</span></div>
+            </div>
+          </article>
 
-        <details>
-          <summary>Can customers buy now and pay later?</summary>
-          <p>Yes. This home page highlights that payment option so it feels premium and flexible.</p>
-        </details>
+          <article class="product-card">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="Natural wave wig" /></div>
+            <div class="body">
+              <div class="meta">
+                <h5>Velvet Wave 26"</h5>
+                <div class="price">$285</div>
+              </div>
+              <p>Soft body waves made for an elegant everyday look with a luxury feel.</p>
+              <div class="bottom"><span class="stars">★★★★★</span><span>Best for brunch</span></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80" alt="Curly luxury wig" /></div>
+            <div class="body">
+              <div class="meta">
+                <h5>Opulence Curl 24"</h5>
+                <div class="price">$310</div>
+              </div>
+              <p>Defined curls with fullness, bounce, and an undeniably rich silhouette.</p>
+              <div class="bottom"><span class="stars">★★★★★</span><span>Volume queen</span></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1524503033411-f0f8c33c44bb?auto=format&fit=crop&w=1200&q=80" alt="Long glossy hairstyle" /></div>
+            <div class="body">
+              <div class="meta">
+                <h5>Signature Silk 28"</h5>
+                <div class="price">$340</div>
+              </div>
+              <p>Glossy strands, refined density, and a sleek profile that feels effortless.</p>
+              <div class="bottom"><span class="stars">★★★★★</span><span>Luxury pick</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="container about-banner" id="story">
+        <div class="about-copy">
+          <div class="eyebrow">Why customers fall in love</div>
+          <h4>Hair that feels personal, not mass-produced.</h4>
+          <p>
+            Your website should feel like walking into a private boutique: elegant, calm,
+            and irresistibly premium. Every detail here is designed to help customers imagine
+            themselves in the hair before they even click buy.
+          </p>
+          <div class="benefits">
+            <div class="benefit">
+              <i class="fa-solid fa-award"></i>
+              <div><strong>Beautifully selected styles</strong><span>From everyday glam to standout occasion looks.</span></div>
+            </div>
+            <div class="benefit">
+              <i class="fa-solid fa-sparkles"></i>
+              <div><strong>Luxury visual identity</strong><span>Minimal, premium, and persuasive without feeling crowded.</span></div>
+            </div>
+            <div class="benefit">
+              <i class="fa-solid fa-shield-heart"></i>
+              <div><strong>Confidence in every order</strong><span>Trust-building copy, clean layout, and a polished shopping feel.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-visual">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=80" alt="Elegant woman with stylish hair" />
+        </div>
+      </div>
+
+      <div class="container testimonial">
+        <p class="quote">A website that sells the feeling before it sells the wig.</p>
+        <div class="quote-panel">
+          <p>
+            “This layout makes the brand feel expensive in the best way. It is clean,
+            feminine, and confident — exactly what a premium wig business needs to make customers excited.”
+          </p>
+          <div class="person">
+            <div class="avatar">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" alt="Customer portrait" />
+            </div>
+            <div>
+              <strong>Customer-first design</strong>
+              <span>Luxury homepage concept</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container cta" id="contact">
+        <div class="cta-inner">
+          <div>
+            <h3>Ready to make her say, “Wow, this is beautiful.”</h3>
+            <p>
+              This homepage is built to feel premium, elegant, and memorable — the kind of site that makes a wig business look established, desirable, and worth exploring.
+            </p>
+          </div>
+          <div class="actions">
+            <a class="btn btn-outline" href="#"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a class="btn" href="#products"><i class="fa-solid fa-bag-shopping"></i> Shop Now</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer" id="contact">
-    <div class="footer-brand">
-      <h2>Glamour Glitz</h2>
-      <p>Luxury wigs, frontals, closures, and extensions for everyday elegance.</p>
-    </div>
-
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="products.html">Shop</a>
-      <a href="product.html">Featured Product</a>
-      <a href="#faq">FAQs</a>
-    </div>
-
-    <div class="footer-contact">
-      <p>Email: hello@glamourglitz.com</p>
-      <p>Instagram: @glamourglitz</p>
+  <footer>
+    <div class="container footer-wrap">
+      <div>© 2026 Luxe Wigs. Designed for premium hair lovers.</div>
+      <div class="social">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      </div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
